@@ -5,6 +5,92 @@
     <title>PokemonBattle</title>
 </head>
 <body>
+	<header>
+		<h1>
+			Pokemon Battle
+		</h1>
+	</header>
+	<div class="container" id="turno">
+		<h2>
+			Turno
+		</h2>
+		<div class="player">
+			<h3>Player 1</h3>
+			<p id="namePlayer1">Batman</p>
+		</div>
+		<div class="player">
+			<h3>Player 2</h3>
+			<p id="namePlayer2">Superman</p>
+		</div>
+	</div>
+	<div class="container" id="playerName">
+		<h2>
+			Elige tu nombre de Maestro Pokemón
+		</h2>
+		<input type="text" placeholder="Juan Gaybre" id="choosingPlayerName">
+		<button class="btn" id="btnPlayerName">Aceptar</button>
+	</div>
+	<div class="container" id="chosingPokemon">
+		<h2>
+			Elige a tu compañero de batalla
+		</h2>
+		<section class="listaPokemon" id="listaPokemonA">
+			<h3>
+				¡Atrapa tu Pokemón!
+			</h3>
+			<p>
+				Ingresa el ID y presiona Aceptar solo si estas listo para inliciar la batalla
+			</p>
+			<input type="text" placeholder="ID" id="pkemonSelected">
+			<button class="btn" id="btnPokemonName">Aceptar</button>
+		</section>
+		<section class="listaPokemon" id="listaPokemonB">
+			<h3>
+				Lista de Pokemones disponibles
+			</h3>
+			<ol>
+				<li>bulbasaur</li>
+				<li>ivysaur</li>
+				<li>venusaur</li>
+				<li>charmander</li>
+				<li>charmeleon</li>
+				<li>charizard</li>
+				<li>squirtle</li>
+				<li>wartortle</li>
+				<li>blastoise</li>
+				<li>caterpie</li>
+			</ol>
+		</section>
+	</div>
+	<div class="container">
+		<div class="container-pokemonInfo">
+			<div class="datosPokemon" id="datosPokemon1">
+				<p><strong>Nombre: </strong></p>
+				<p><strong>Tipo: </strong></p>
+				<p><strong>Vida: </strong></p>
+			</div>
+			<div class="pokemonElegido" id="pokemonElegido1">
+				<p class="datos" id="pokemonName">Pikachu</p>
+				<p class="datos" id="pokemonType">Electrico</p>
+				<p class="datos" id="pokemonLife">100</p>
+			</div>
+			<div class="datosPokemon" id="datosPokemon2">
+				<p><strong>Nombre: </strong></p>
+				<p><strong>Tipo: </strong></p>
+				<p><strong>Vida: </strong></p>
+			</div>
+			<div class="pokemonElegido" id="pokemonElegido2">
+				<p class="datos" id="pokemonName">Charmander</p>
+				<p class="datos" id="pokemonType">Fuego</p>
+				<p class="datos" id="pokemonLife">100</p>
+			</div>
+		</div>
+		<hr>
+		<div class="container-battle">
+			
+		</div>
+	</div>
+
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
