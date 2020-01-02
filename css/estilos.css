@@ -1,7 +1,61 @@
+/*#FFDF17 AMARILLO
+#122FA4 AZUL
+#3BE5EE AZUL BRILLOSO
+#F81820 ROJO
+*/
+body {
+	margin: 0px;
+	background-color: #3BE5EE;
+}
+
+header {
+	background-color: #F81820;
+	padding: 20px;
+	text-align: center;
+}
+h2 {
+	text-align: center;
+}
+
+.container {
+	border: 2px solid #122FA4;
+	padding: 15px;
+	margin: 10px;
+	border-radius: 10px;
+	background-color: white;
+}
+
+
+
+#turno {
+	display: flex;
+	justify-content: space-between;
+}
+
+.player {
+	border: 2px solid green;
+	border-radius: 50px;
+	text-align: center;
+	width: 150px;
+	padding: 5px;
+}
+h3 {
+	margin: 0px;
+}
+.textPlayerName {
+	margin: 0px;
+}
+
+
+
+
+
+
+
 #scroll {
 	border 1px solid gray;
 	width: 200px;
 	height: 200px;
 	overflow-y: scroll;
-	overflow-x: hidden;
+	overflow-x: histdden;
 }
