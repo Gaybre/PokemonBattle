@@ -73,7 +73,7 @@ h3 {
 
 
 
-
+/*Container - Elige a tu compañero de batalla*/
 .container-choosingPokemon {
 	display: flex;
 	justify-content: space-around;
@@ -103,4 +103,28 @@ h3 {
 #imgPokebola {
 	width: 100px;
 	margin: auto;
+}
+
+
+/* ------------------------------------ Container Pokemon Info*/
+.container-pokemonInfo {
+	display: flex;
+	justify-content: space-between;
+}
+.datosPokemon {
+	border:1px solid red;
+	width: 80px;
+	padding: 5px;
+}
+.pokemonElegido {
+	border:1px solid red;	
+	width: 120px;
+	padding: 5px;
+}
+.datosPokemon p {
+	margin: 0px;
+	font-weight: bold;
+}
+.datos {
+	margin: 0px;
 }
