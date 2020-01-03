@@ -14,7 +14,7 @@
 			<h3>Player 1</h3>
 			<p class="textPlayerName" id="namePlayer1">Batman</p>
 		</div>
-		<h2>
+		<h2 id="textTurno">
 			Turno
 		</h2>
 		<div class="player">
@@ -22,46 +22,52 @@
 			<p class="textPlayerName" id="namePlayer2">Superman</p>
 		</div>
 	</div>
-	<div class="container" id="playerName">
+	<div class="container">
 		<h2>
 			Elige tu nombre de Maestro Pokemón
 		</h2>
-		<input type="text" placeholder="Juan Gaybre" id="choosingPlayerName">
-		<button class="btn" id="btnPlayerName">Aceptar</button>
+    <div class="container-playerName">
+      <img src="https://vignette.wikia.nocookie.net/bohaterowie/images/2/2f/Ash_anime.png/revision/latest/top-crop/width/360/height/450?cb=20190703073831&path-prefix=pl" alt="Maestro Pokemon" width="200">
+  		<input type="text" placeholder="Juan Gaybre" class="txt" id="choosingPlayerName">
+  		<button class="btn" id="btnPlayerName">Aceptar</button>
+    </div>
 	</div>
-	<div class="container" id="chosingPokemon">
+	<div class="container">
 		<h2>
 			Elige a tu compañero de batalla
 		</h2>
-		<section class="listaPokemon" id="listaPokemonA">
-			<h3>
-				¡Atrapa tu Pokemón!
-			</h3>
-			<p>
-				Ingresa el ID y presiona Aceptar solo si estas listo para inliciar la batalla
-			</p>
-			<input type="text" placeholder="ID" id="pkemonSelected">
-			<button class="btn" id="btnPokemonName">Aceptar</button>
-		</section>
-		<section class="listaPokemon" id="listaPokemonB">
-			<h3>
-				Lista de Pokemones disponibles
-			</h3>
-			<div id="scroll">
-				<ol>
-					<li>bulbasaur</li>
-					<li>ivysaur</li>
-					<li>venusaur</li>
-					<li>charmander</li>
-					<li>charmeleon</li>
-					<li>charizard</li>
-					<li>squirtle</li>
-					<li>wartortle</li>
-					<li>blastoise</li>
-					<li>caterpie</li>
-				</ol>
-			</div>
-		</section>
+		<div class="container-chosingPokemon">
+  		<section class="listaPokemon" id="listaPokemonA">
+  			<h3>
+  				Lista de Pokemones disponibles
+  			</h3>
+  			<div id="scroll">
+  				<ol>
+  					<li>bulbasaur</li>
+  					<li>ivysaur</li>
+  					<li>venusaur</li>
+  					<li>charmander</li>
+  					<li>charmeleon</li>
+  					<li>charizard</li>
+  					<li>squirtle</li>
+  					<li>wartortle</li>
+  					<li>blastoise</li>
+  					<li>caterpie</li>
+  				</ol>
+  			</div>
+  		</section>
+      <section class="listaPokemon" id="listaPokemonA">
+  			<h3>
+  				¡Atrapa tu Pokemón!
+  			</h3>
+        <img src="https://cdn.pixabay.com/photo/2019/11/18/15/46/pokemon-4635112__340.png" alt="Pokebola" width="150">
+  			<p>
+  				Ingresa el ID y presiona Aceptar solo si estas listo para inliciar la batalla
+  			</p>
+  			<input type="text" placeholder="ID" class="txt" id="pkemonSelected">
+  			<button class="btn" id="btnPokemonName">Aceptar</button>
+  		</section>
+    </div>
 	</div>
 	<div class="container">
 		<div class="container-pokemonInfo">
@@ -88,7 +94,7 @@
 		</div>
 		<hr>
 		<div class="container-battle">
-			
+
 		</div>
 	</div>
 

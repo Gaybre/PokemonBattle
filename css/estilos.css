@@ -20,16 +20,23 @@ h2 {
 .container {
 	border: 2px solid #122FA4;
 	padding: 15px;
-	margin: 10px;
+	margin: 10px 15px;
 	border-radius: 10px;
 	background-color: white;
 }
 
 
 
+
+
 #turno {
 	display: flex;
 	justify-content: space-between;
+	height: 100px;
+	align-items: flex-end;
+}
+#textTurno {
+	align-self: flex-start;
 }
 
 .player {
@@ -48,6 +55,41 @@ h3 {
 
 
 
+
+.container-playerName {
+	display: grid;
+	justify-content: center;
+}
+.txt {
+	margin: 10px 0;
+	padding: 5px;
+	border-radius: 5px;
+}
+.btn {
+	padding: 5px;
+	border-radius: 5px;
+}
+
+
+
+
+.container-chosingPokemon {
+	height: 350px;
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-end;
+}
+
+.listaPokemon {
+	height: 300px;
+}
+
+.listaPokemon h3 {
+	margin-bottom: 10px;
+}
+.listaPokemon p {
+	margin: 0px;
+}
 
 
 
