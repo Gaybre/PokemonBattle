@@ -101,3 +101,29 @@ h3 {
 	overflow-y: scroll;
 	overflow-x: histdden;
 }
+
+
+
+
+footer {
+	background-color: gray;
+	padding: 15px;
+}
+#footer-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+footer div {
+	display: flex;
+}
+footer p {
+	margin: 0px;
+	text-align: center;
+}
+.redes {
+	border: 1px solid red;
+	margin: 10px;
+	height: 50px
+}
