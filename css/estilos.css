@@ -106,14 +106,23 @@ h3 {
 
 
 footer {
-	background-color: gray;
+	background-color: #005fff;
 	padding: 15px;
+	margin-top: 20px;
+	
 }
 #footer-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	flex-wrap: wrap;
+}
+.footerEmail {
+	margin-left: 5px;
+	border-radius: 5px;
+	background-color: black;
+	padding: 5px;
+	color: white; 
 }
 footer div {
 	display: flex;
@@ -122,8 +131,14 @@ footer p {
 	margin: 0px;
 	text-align: center;
 }
+footer div p a {
+	color: black;
+}
 .redes {
-	border: 1px solid red;
+	border: 4px solid black;
+	border-radius: 10px;
+	align-items: center;
 	margin: 10px;
-	height: 50px
+	height: 60px;
+	width: 60px;
 }
