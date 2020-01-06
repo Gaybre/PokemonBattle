@@ -112,19 +112,30 @@ h3 {
 	justify-content: space-between;
 }
 .datosPokemon {
-	border:1px solid red;
-	width: 80px;
+	border:3px solid red;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-right: 0px;
+	width: 70px;
 	padding: 5px;
 }
 .pokemonElegido {
-	border:1px solid red;	
+	border:3px solid red;	
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-left: 0px;
 	width: 120px;
 	padding: 5px;
 }
 .datosPokemon p {
 	margin: 0px;
 	font-weight: bold;
+	text-align: right;
 }
 .datos {
 	margin: 0px;
+}
+.pokemonInfo {
+	width: 220px;
+	display: flex;
 }
