@@ -30,6 +30,7 @@ h2 {
 
 #container-start {
 	display: grid;
+	margin-bottom: 240px;
 }
 #btnStart {
 	width: 200px;
@@ -187,7 +188,7 @@ h3 {
 /*------------------------   footer*/
 footer {
 	background-color: #005fff;
-	padding: 15px;
+	padding: 5px;
 	margin-top: 20px;	
 }
 #footer-container {
@@ -203,8 +204,9 @@ footer {
 	padding: 5px;
 	color: white; 
 }
-footer div {
+.footer-redes-contacto {
 	display: flex;
+	align-items: center;
 }
 footer p {
 	margin: 0px;
@@ -218,8 +220,11 @@ footer div p a {
 	border-radius: 10px;
 	align-items: center;
 	margin: 10px;
-	height: 50px;
-	width: 50px;
+	height: 40px;
+	width: 40px;
+}
+.redes-icon {
+	padding-top: 5px;
 }
 
 
