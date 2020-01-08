@@ -22,7 +22,24 @@
 			<p class="textPlayerName" id="namePlayer2"></p>
 		</div>
 	</div>
-	<div class="container">
+	<section class="container" id="container-start">
+			<h2>Para poder jugar deberás...</h2>
+			<ol>
+				<li>Identificarte con un nombre de jugador</li>
+				<li>Seleccionar alguno de los pokemon disponibles</li>
+				<li>Espera a que inicie el juego y gana la batalla</li>
+			</ol>
+			<p>El combate es 1 vs 1, en la parte superior se mostrará la sección que indique el turno de cada jugador</p>
+			<button class="btn" id="btnStart">Empezar</button>
+			<hr>
+			<p id="container-start-foot">
+				<small>
+					Al final no olvides visitar el repositorio de este proyecto
+					<img src="https://cdn.pixabay.com/photo/2016/07/21/00/38/pokemon-1531648__340.png" width="15">
+				</small>
+			</p>
+	</section>
+	<div class="container" id="container-choose-playerName">
 		<h2>
 			Elige tu nombre de Maestro Pokemón
 		</h2>
@@ -32,7 +49,7 @@
 			<button class="btn" id="btnPlayerName">Aceptar</button>
 	    </div>
 	</div>
-	<div class="container">
+	<div class="container" id="container-choose-pokemon">
 		<h2>
 			Elige a tu compañero de batalla
 		</h2>
@@ -69,7 +86,12 @@
 	  		</section>
 	    </div>
 	</div>
-	<div class="container">
+	<div id="container-timer">
+		<p>Que gane el mejor!!</p>
+		<img src="https://media.giphy.com/media/WBpJbqS9hFsic/giphy.gif" width="200">
+		<p id="timer"> 3.. 2.. 1..</p>
+	</div>
+	<div class="container" id="container-pokemonInfo-battle">
 		<div class="container-pokemonInfo">
 			<div class="pokemonInfo">
 				<div class="datosPokemon" id="datosPokemon1">
@@ -100,11 +122,6 @@
 		<hr>
 		<div class="container-battle">
 			<div class="battle">
-				<div id="container-timer">
-					<p>Que gane el mejor!!</p>
-					<img src="https://media.giphy.com/media/WiIuC6fAOoXD2/giphy.gif" width="200">
-					<p id="timer"> 3.. 2.. 1..</p>
-				</div>
 				<div class="pokemonSelected">
 					<div class="ps">pokemonSelected1</div>
 					<div class="ps">pokemonSelected2</div>
