@@ -6,6 +6,7 @@
 body {
 	margin: 0px;
 	background-color: #00CED1;
+	font-family: 'Varela Round', sans-serif;
 }
 
 header {
@@ -13,8 +14,14 @@ header {
 	padding: 20px;
 	text-align: center;
 }
-h2 {
+h2,
+h3 {
 	text-align: center;
+	font-family: 'Exo 2', sans-serif;
+}
+h3 {
+	margin: 0px;
+	margin-bottom: 15px;
 }
 
 .container {
@@ -36,9 +43,10 @@ h2 {
 	height: 50px;
 	font-size: 20px;
 	margin: 20px auto;
+	margin-top: 100px;
 }
 hr {
-	width: 60%;
+	width: 90%;
 }
 #container-start-foot {
 	text-align: center;
@@ -63,11 +71,12 @@ hr {
 	border: 4px solid #00FF00;
 	background-color: #98FB98;
 }
-h3 {
+.player h3 {
 	margin: 0px;
 }
-.textPlayerName {
+.display-text{
 	margin: 0px;
+	font-family: 'Sniglet', cursive;
 }
 
 
@@ -85,24 +94,23 @@ h3 {
 .btn {
 	padding: 5px;
 	border-radius: 5px;
+	font-family: 'Orbitron', sans-serif;
+	letter-spacing: .5em;
 }
 
 
 
-/*Container - Elige a tu compañero de batalla*/
+/*--------------------------- Container - Elige a tu compañero de batalla*/
 .container-choosingPokemon {
 	display: flex;
 	justify-content: space-around;
 	align-items: flex-end;
 	flex-wrap: wrap;
+	
 }
 .listaPokemon {
 	width: 300px;
-	height: 275px;
-}
-.listaPokemon h3 {
-	margin-bottom: 15px;
-	text-align: center;
+	height: 320px;
 }
 .listaPokemon p {
 	margin: 0px;
@@ -115,6 +123,7 @@ h3 {
 	width: 250px;
 	height: 200px;
 	overflow-y: scroll;
+	margin: auto;
 }
 #imgPokebola {
 	width: 100px;
@@ -148,9 +157,6 @@ h3 {
 	font-weight: bold;
 	text-align: right;
 }
-.datos {
-	margin: 0px;
-}
 .pokemonInfo {
 	width: 197px;
 	display: flex;
@@ -181,17 +187,24 @@ h3 {
 #battle-text {
 	background-color: #fff;
 	border:2px solid gray;
+	border-left: #9c9c9c;
+	border-top: #9c9c9c;
 	padding: 5px;
 	border-radius: 5px;
+	margin-top: 10px;
 }
 
 
 /*------------------------   footer*/
 footer {
 	background-color: #005fff;
-	position: fixed;
+	margin-top: 50px;
+	padding: 10px 0;
 	width: 100%;
 	bottom: 0px;
+	font-family: 'arial';
+	font-size: 0.8em;
+	position: fixed;
 }
 
 #footer-container {

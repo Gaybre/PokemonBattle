@@ -3,6 +3,8 @@
 	<head>
 	    <meta charset="UTF-8">
 	    <title>PokemonBattle</title>
+	    <link rel="icon" type="Pokebola/png" href="https://cdn.pixabay.com/photo/2016/09/29/12/55/pokemon-1702772__340.png">
+	    <link href="https://fonts.googleapis.com/css?family=Exo+2|Orbitron|Sniglet|Varela+Round&display=swap" rel="stylesheet">
 	    <link rel="stylesheet" type="text/css" href="css/estilos.css">
 	</head>
 	<body>
@@ -12,14 +14,14 @@
 		<div class="container" id="turno">
 			<div class="player">
 				<h3>Player 1</h3>
-				<p class="textPlayerName" id="namePlayer1"></p>
+				<p class="display-text" id="namePlayer1"></p>
 			</div>
 			<h2 id="textTurno">
 				Turno
 			</h2>
 			<div class="player">
 				<h3>Player 2</h3>
-				<p class="textPlayerName" id="namePlayer2"></p>
+				<p class="display-text" id="namePlayer2"></p>
 			</div>
 		</div>
 		<section class="container" id="container-start">
@@ -100,9 +102,9 @@
 						<p>Vida:</p>
 					</div>
 					<div class="pokemonElegido" id="pokemonElegido1">
-						<p class="datos" id="pokemonName">Pikachu</p>
-						<p class="datos" id="pokemonType">Electrico</p>
-						<p class="datos" id="pokemonLife">100</p>
+						<p class="display-text" id="pokemonName">Pikachu</p>
+						<p class="display-text" id="pokemonType">Electrico</p>
+						<p class="display-text" id="pokemonLife">100</p>
 					</div>
 				</div>
 				<div class="pokemonInfo">
@@ -112,9 +114,9 @@
 						<p>Vida:</p>
 					</div>
 					<div class="pokemonElegido" id="pokemonElegido2">
-						<p class="datos" id="pokemonName">Charmander</p>
-						<p class="datos" id="pokemonType">Fuego</p>
-						<p class="datos" id="pokemonLife">100</p>
+						<p class="display-text" id="pokemonName">Charmander</p>
+						<p class="display-text" id="pokemonType">Fuego</p>
+						<p class="display-text" id="pokemonLife">100</p>
 					</div>
 				</div>
 			</div>
@@ -125,7 +127,7 @@
 					<div class="ps">pokemonSelected1</div>
 					<div class="ps">pokemonSelected2</div>
 				</div>
-				<p id="battle-text">Comienza la batalla, mira el indicador sobre el nombre del player para saber de quien es el turno</p>
+				<p class="display-text" id="battle-text">Comienza la batalla, mira el indicador sobre el nombre del player para saber de quien es el turno</p>
 			</div>
 		</div>
 		<footer>
@@ -162,7 +164,10 @@
 				</div>
 			</div>
 			<hr>
-			<p>El contenido gráfico de rutas absolutas es obtenido de fuentes que permiten el libre uso de manera no comercial</p>
+			<p>
+				Cuentame por Twitter que te pareció | Contribuye por GitHub
+				<br />El contenido gráfico de rutas absolutas es obtenido de fuentes que permiten el libre uso de manera no comercial
+			</p>
 		</footer>
 	    <script
 	        src="https://code.jquery.com/jquery-3.4.1.min.js"
