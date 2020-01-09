@@ -30,7 +30,6 @@ h2 {
 
 #container-start {
 	display: grid;
-	margin-bottom: 240px;
 }
 #btnStart {
 	width: 200px;
@@ -38,7 +37,9 @@ h2 {
 	font-size: 20px;
 	margin: 20px auto;
 }
-
+hr {
+	width: 60%;
+}
 #container-start-foot {
 	text-align: center;
 	margin: 0px;
@@ -167,7 +168,7 @@ h3 {
 	align-items: center;
 	display: none;
 }
-.pokemonSelected {
+.battle {
 	margin-top: 15px;
 	display: flex;
 	justify-content: space-around;
@@ -188,10 +189,13 @@ h3 {
 /*------------------------   footer*/
 footer {
 	background-color: #005fff;
-	padding: 5px;
-	margin-top: 20px;	
+	position: fixed;
+	width: 100%;
+	bottom: 0px;
 }
+
 #footer-container {
+	padding: 5px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

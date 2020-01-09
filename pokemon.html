@@ -1,176 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>PokemonBattle</title>
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
-</head>
-<body>
-	<header>
-		<a href="https://fontmeme.com/es/fuente-pokemon/"><img src="https://fontmeme.com/permalink/200102/d5d66e666f89055c838378429dc8ab7c.png" alt="fuente-pokemon" border="0" width="450px"></a>
-	</header>
-	<div class="container" id="turno">
-		<div class="player">
-			<h3>Player 1</h3>
-			<p class="textPlayerName" id="namePlayer1"></p>
+	<head>
+	    <meta charset="UTF-8">
+	    <title>PokemonBattle</title>
+	    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+	</head>
+	<body>
+		<header>
+			<a href="https://fontmeme.com/es/fuente-pokemon/"><img src="https://fontmeme.com/permalink/200102/d5d66e666f89055c838378429dc8ab7c.png" alt="fuente-pokemon" border="0" width="450px"></a>
+		</header>
+		<div class="container" id="turno">
+			<div class="player">
+				<h3>Player 1</h3>
+				<p class="textPlayerName" id="namePlayer1"></p>
+			</div>
+			<h2 id="textTurno">
+				Turno
+			</h2>
+			<div class="player">
+				<h3>Player 2</h3>
+				<p class="textPlayerName" id="namePlayer2"></p>
+			</div>
 		</div>
-		<h2 id="textTurno">
-			Turno
-		</h2>
-		<div class="player">
-			<h3>Player 2</h3>
-			<p class="textPlayerName" id="namePlayer2"></p>
-		</div>
-	</div>
-	<section class="container" id="container-start">
-			<h2>Para poder jugar deberás...</h2>
-			<ol>
-				<li>Identificarte con un nombre de jugador</li>
-				<li>Seleccionar alguno de los pokemon disponibles</li>
-				<li>Espera a que inicie el juego y gana la batalla</li>
-			</ol>
-			<p>El combate es 1 vs 1, en la parte superior se mostrará la sección que indique el turno de cada jugador</p>
-			<button class="btn" id="btnStart">Empezar</button>
-			<hr>
-			<p id="container-start-foot">
-				<small>
-					Al final no olvides visitar el repositorio de este proyecto
-					<img src="https://cdn.pixabay.com/photo/2016/07/21/00/38/pokemon-1531648__340.png" width="15">
-				</small>
-			</p>
-	</section>
-	<div class="container" id="container-choose-playerName">
-		<h2>
-			Elige tu nombre de Maestro Pokemón
-		</h2>
-	    <div class="container-playerName">
-	      	<img src="https://vignette.wikia.nocookie.net/bohaterowie/images/2/2f/Ash_anime.png/revision/latest/top-crop/width/360/height/450?cb=20190703073831&path-prefix=pl" alt="Maestro Pokemon" width="200">
-			<input type="text" placeholder="Juan Gaybre" class="txt" id="choosingPlayerName">
-			<button class="btn" id="btnPlayerName">Aceptar</button>
-	    </div>
-	</div>
-	<div class="container" id="container-choose-pokemon">
-		<h2>
-			Elige a tu compañero de batalla
-		</h2>
-		<div class="container-choosingPokemon">
-	  		<section class="listaPokemon" id="listaPokemonA">
-	  			<h3>
-	  				Pokemones disponibles
-	  			</h3>
-	  			<div id="scroll">
-	  				<ol>
-	  					<li>bulbasaur</li>
-	  					<li>ivysaur</li>
-	  					<li>venusaur</li>
-	  					<li>charmander</li>
-	  					<li>charmeleon</li>
-	  					<li>charizard</li>
-	  					<li>squirtle</li>
-	  					<li>wartortle</li>
-	  					<li>blastoise</li>
-	  					<li>caterpie</li>
-	  				</ol>
-	  			</div>
-	  		</section>
-	     	<section class="listaPokemon" id="listaPokemonB">
-	  			<h3>
-	  				¡Atrapa tu Pokemón!
-	  			</h3>
-	        	<img src="https://cdn.pixabay.com/photo/2019/11/18/15/46/pokemon-4635112__340.png" alt="Pokebola" id="imgPokebola">
-	  			<p>
-					Selecciona, ingresa el ID y presiona Aceptar solo si estas listo para inliciar la batalla
+		<section class="container" id="container-start">
+				<h2>Para poder jugar deberás...</h2>
+				<ol>
+					<li>Identificarte con un nombre de jugador</li>
+					<li>Seleccionar alguno de los pokemon disponibles</li>
+					<li>Espera a que inicie el juego y gana la batalla</li>
+				</ol>
+				<p>El combate es 1 vs 1, en la parte superior se mostrará la sección que indique el turno de cada jugador</p>
+				<button class="btn" id="btnStart">Empezar</button>
+				<hr id="line">
+				<p id="container-start-foot">
+					<small>
+						Al final no olvides visitar el repositorio de este proyecto
+						<img src="https://cdn.pixabay.com/photo/2016/07/21/00/38/pokemon-1531648__340.png" width="15">
+					</small>
 				</p>
-	  			<input type="text" placeholder="ID" class="txt" id="pkemonSelected">
-	  			<button class="btn" id="btnPokemonName">Aceptar</button>
-	  		</section>
-	    </div>
-	</div>
-	<div id="container-timer">
-		<p>Que gane el mejor!!</p>
-		<img src="https://media.giphy.com/media/WBpJbqS9hFsic/giphy.gif" width="200">
-		<p id="timer"> 3.. 2.. 1..</p>
-	</div>
-	<div class="container" id="container-pokemonInfo-battle">
-		<div class="container-pokemonInfo">
-			<div class="pokemonInfo">
-				<div class="datosPokemon" id="datosPokemon1">
-					<p>Nombre:</p>
-					<p>Tipo:</p>
-					<p>Vida:</p>
-				</div>
-				<div class="pokemonElegido" id="pokemonElegido1">
-					<p class="datos" id="pokemonName">Pikachu</p>
-					<p class="datos" id="pokemonType">Electrico</p>
-					<p class="datos" id="pokemonLife">100</p>
-				</div>
-			</div>
-			<div class="pokemonInfo">
-				<div class="datosPokemon" id="datosPokemon2">
-					<p>Nombre:</p>
-					<p>Tipo:</p>
-					<p>Vida:</p>
-				</div>
-				<div class="pokemonElegido" id="pokemonElegido2">
-					<p class="datos" id="pokemonName">Charmander</p>
-					<p class="datos" id="pokemonType">Fuego</p>
-					<p class="datos" id="pokemonLife">100</p>
-				</div>
-			</div>
+		</section>
+		<div class="container" id="container-choose-playerName">
+			<h2>
+				Elige tu nombre de Maestro Pokemón
+			</h2>
+		    <div class="container-playerName">
+		      	<img src="https://vignette.wikia.nocookie.net/bohaterowie/images/2/2f/Ash_anime.png/revision/latest/top-crop/width/360/height/450?cb=20190703073831&path-prefix=pl" alt="Maestro Pokemon" width="200">
+				<input type="text" placeholder="Juan Gaybre" class="txt" id="choosingPlayerName">
+				<button class="btn" id="btnPlayerName">Aceptar</button>
+		    </div>
 		</div>
-		<hr>
-		<hr>
-		<div class="container-battle">
-			<div class="battle">
-				<div class="pokemonSelected">
+		<div class="container" id="container-choose-pokemon">
+			<h2>
+				Elige a tu compañero de batalla
+			</h2>
+			<div class="container-choosingPokemon">
+		  		<section class="listaPokemon" id="listaPokemonA">
+		  			<h3>
+		  				Pokemones disponibles
+		  			</h3>
+		  			<div id="scroll">
+		  				<ol>
+		  					<li>bulbasaur</li>
+		  					<li>ivysaur</li>
+		  					<li>venusaur</li>
+		  					<li>charmander</li>
+		  					<li>charmeleon</li>
+		  					<li>charizard</li>
+		  					<li>squirtle</li>
+		  					<li>wartortle</li>
+		  					<li>blastoise</li>
+		  					<li>caterpie</li>
+		  				</ol>
+		  			</div>
+		  		</section>
+		     	<section class="listaPokemon" id="listaPokemonB">
+		  			<h3>
+		  				¡Atrapa tu Pokemón!
+		  			</h3>
+		        	<img src="https://cdn.pixabay.com/photo/2019/11/18/15/46/pokemon-4635112__340.png" alt="Pokebola" id="imgPokebola">
+		  			<p>
+						Selecciona, ingresa el ID y presiona Aceptar solo si estas listo para inliciar la batalla
+					</p>
+		  			<input type="text" placeholder="ID" class="txt" id="pkemonSelected">
+		  			<button class="btn" id="btnPokemonName">Aceptar</button>
+		  		</section>
+		    </div>
+		</div>
+		<div id="container-timer">
+			<p>Que gane el mejor!!</p>
+			<img src="https://media.giphy.com/media/WBpJbqS9hFsic/giphy.gif" width="200">
+			<p id="timer"> 3.. 2.. 1..</p>
+		</div>
+		<div class="container" id="container-pokemonInfo-battle">
+			<div class="container-pokemonInfo">
+				<div class="pokemonInfo">
+					<div class="datosPokemon" id="datosPokemon1">
+						<p>Nombre:</p>
+						<p>Tipo:</p>
+						<p>Vida:</p>
+					</div>
+					<div class="pokemonElegido" id="pokemonElegido1">
+						<p class="datos" id="pokemonName">Pikachu</p>
+						<p class="datos" id="pokemonType">Electrico</p>
+						<p class="datos" id="pokemonLife">100</p>
+					</div>
+				</div>
+				<div class="pokemonInfo">
+					<div class="datosPokemon" id="datosPokemon2">
+						<p>Nombre:</p>
+						<p>Tipo:</p>
+						<p>Vida:</p>
+					</div>
+					<div class="pokemonElegido" id="pokemonElegido2">
+						<p class="datos" id="pokemonName">Charmander</p>
+						<p class="datos" id="pokemonType">Fuego</p>
+						<p class="datos" id="pokemonLife">100</p>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<hr>
+			<div class="container-battle">
+				<div class="battle">
 					<div class="ps">pokemonSelected1</div>
 					<div class="ps">pokemonSelected2</div>
 				</div>
+				<p id="battle-text">Comienza la batalla, mira el indicador sobre el nombre del player para saber de quien es el turno</p>
 			</div>
-			<p id="battle-text">Comienza la batalla, mira el indicador sobre el nombre del player para saber de quien es el turno</p>
 		</div>
-	</div>
-	<footer>
-		<div id="footer-container">
-			<div id="footer1" class="footer-redes-contacto">
-				<p>Deja tu email: 📧</p>
-				<input type="text" class="footerEmail" placeholder="No me dejes tu email">
-				<button class="footerEmail">Enviar</button>
-			</div>
-			<div id="footer2">
-				<div class="footer-redes-contacto">
-					<div class="redes">
-						<img src="images/gh.png" width="40" height="30" class="redes-icon">
-					</div>
-					<div class="redes">
-						<img src="images/lk.png" width="40" height="40">
-					</div>
-					<div class="redes">
-						<img src="images/tw.png" width="45" height="40">
-					</div>
-					<div class="redes">
-						<img src="images/fb.png" width="40" height="30" class="redes-icon">
-					</div>
+		<footer>
+			<div id="footer-container">
+				<div id="footer1" class="footer-redes-contacto">
+					<p>Deja tu email: 📧</p>
+					<input type="text" class="footerEmail" placeholder="No me dejes tu email">
+					<button class="footerEmail">Enviar</button>
 				</div>
-				<p>⬆️ Contáctame aquí ⬆️</p>
+				<div id="footer2">
+					<div class="footer-redes-contacto">
+						<div class="redes">
+							<img src="images/gh.png" width="40" height="30" class="redes-icon">
+						</div>
+						<div class="redes">
+							<img src="images/lk.png" width="40" height="40">
+						</div>
+						<div class="redes">
+							<img src="images/tw.png" width="45" height="40">
+						</div>
+						<div class="redes">
+							<img src="images/fb.png" width="40" height="30" class="redes-icon">
+						</div>
+					</div>
+					<p>⬆️ Contáctame aquí ⬆️</p>
+				</div>
+				<div id="footer3">
+					<p>
+						<a href="https://github.com/Gaybre/PokemonBattle">
+							Visita el repositorio y mira como puedes contribuir en él
+						</a>
+						<img src="https://cdn.pixabay.com/photo/2016/07/21/00/38/pokemon-1531648__340.png" width="15">
+					</p>
+				</div>
 			</div>
-			<div id="footer3">
-				<p>
-					<a href="https://github.com/Gaybre/PokemonBattle">
-						Visita el repositorio y mira como puedes contribuir en él
-					</a>
-					<img src="https://cdn.pixabay.com/photo/2016/07/21/00/38/pokemon-1531648__340.png" width="15">
-				</p>
-			</div>
-		</div>
-		<hr>
-		<p>El contenido gráfico de rutas absolutas es obtenido de fuentes que permiten el libre uso de manera no comercial</p>
-	</footer>
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous">
-    </script>
-    <script src="pokemon.js"></script>
-</body>
+			<hr>
+			<p>El contenido gráfico de rutas absolutas es obtenido de fuentes que permiten el libre uso de manera no comercial</p>
+		</footer>
+	    <script
+	        src="https://code.jquery.com/jquery-3.4.1.min.js"
+	        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	        crossorigin="anonymous">
+	    </script>
+	    <script src="pokemon.js"></script>
+	</body>
 </html>
