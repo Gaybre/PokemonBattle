@@ -11,6 +11,7 @@ const $txtPlayer = document.getElementById('choosingPlayerName')
 const $playerName1 = document.getElementById('namePlayer1')
 const $playerName2 = document.getElementById('namePlayer2')
 const $chosePokemon = document.getElementById('container-choose-pokemon')
+var namePlayer1, namePlayer2
 
 $start.addEventListener('click', empezar)
 $btnPlayer.addEventListener('click', playerName)
@@ -34,6 +35,7 @@ var n = 1
 function playerName() {
 	switch(n) {
 		case 1:
+			namePlayer1 = $txtPlayer.value
 			$playerName1.innerHTML = $txtPlayer.value
 			$txtPlayer.value = ''
 			n++
@@ -41,12 +43,13 @@ function playerName() {
 			$p2.classList.toggle('indicator')
 			break
 		case 2:
+			namePlayer2 = $txtPlayer.value
 			$playerName2.innerHTML = $txtPlayer.value
 			n++
 		case 3:
 			$p2.classList.toggle('indicator')
-			setTimeout(() => alert('Nombres listos !!'), 1000)
 			$chosePlayerName.classList.toggle('choosePlayerName')
 			$chosePokemon.classList.toggle('containerChoosePokemon')
+			setTimeout(() => $p1.classList.toggle('indicator'), 500)
 	}
 }
