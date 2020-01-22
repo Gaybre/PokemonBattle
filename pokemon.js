@@ -12,9 +12,7 @@ function elegirPokemon(id){
             resolve(poke)
         })
     })
-
     .then(poke => console.log(`Elegiste a ${poke.name}`))
-
     .catch(() => console.log('Se tuvo un error al elegir al Pokemon'))
 
 }

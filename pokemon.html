@@ -11,15 +11,16 @@
 		<header>
 			<a href="https://fontmeme.com/es/fuente-pokemon/"><img src="https://fontmeme.com/permalink/200102/d5d66e666f89055c838378429dc8ab7c.png" alt="fuente-pokemon" border="0" width="450px"></a>
 		</header>
+		<img src="https://media.giphy.com/media/WBpJbqS9hFsic/giphy.gif" class="imgcharging" id="charging">
 		<div class="container" id="turno">
-			<div class="player">
+			<div class="player" id="p1">
 				<h3>Player 1</h3>
 				<p class="display-text" id="namePlayer1"></p>
 			</div>
 			<h2 id="textTurno">
 				Turno
 			</h2>
-			<div class="player">
+			<div class="player" id="p2">
 				<h3>Player 2</h3>
 				<p class="display-text" id="namePlayer2"></p>
 			</div>
@@ -90,7 +91,7 @@
 		</div>
 		<div id="container-timer">
 			<p>Que gane el mejor!!</p>
-			<img src="https://media.giphy.com/media/WBpJbqS9hFsic/giphy.gif" width="200">
+			<img src="https://media.giphy.com/media/WBpJbqS9hFsic/giphy.gif" width="200" class="imgcharging" id="charging">
 			<p id="timer"> 3.. 2.. 1..</p>
 		</div>
 		<div class="container" id="container-pokemonInfo-battle">
@@ -130,7 +131,7 @@
 				<p class="display-text" id="battle-text">Comienza la batalla, mira el indicador sobre el nombre del player para saber de quien es el turno</p>
 			</div>
 		</div>
-		<footer>
+		<footer class="footer" id="footer">
 			<div id="footer-container">
 				<div id="footer1" class="footer-redes-contacto">
 					<p>Deja tu email: 📧</p>
@@ -174,6 +175,7 @@
 	        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	        crossorigin="anonymous">
 	    </script>
+	    <script type="text/javascript" src='index.js'></script>
 	    <script src="pokemon.js"></script>
 	</body>
 </html>

@@ -1,9 +1,4 @@
-﻿/*#FFDF17 AMARILLO
-#122FA4 AZUL
-#3BE5EE AZUL BRILLOSO
-#F81820 ROJO
-*/
-body {
+﻿body {
 	margin: 0px;
 	background-color: #00CED1;
 	font-family: 'Varela Round', sans-serif;
@@ -30,14 +25,19 @@ h3 {
 	margin: 10px 15px;
 	border-radius: 10px;
 	background-color: #E0FFFF;
+	display: none;
 }
 
+.imgcharging {
+	width: 100%;
+	height: 600px;
+}
 
-
-
-#container-start {
+.start {
 	display: grid;
 }
+
+
 #btnStart {
 	width: 200px;
 	height: 50px;
@@ -52,13 +52,7 @@ hr {
 	text-align: center;
 	margin: 0px;
 }
-#turno {
-	display: flex;
-	justify-content: space-between;
-	height: 100px;
-	align-items: flex-end;
-	display: none;
-}
+
 #textTurno {
 	align-self: flex-start;
 }
@@ -68,9 +62,13 @@ hr {
 	text-align: center;
 	width: 150px;
 	padding: 5px;
+}
+.indicator {
 	border: 4px solid #00FF00;
 	background-color: #98FB98;
 }
+
+
 .player h3 {
 	margin: 0px;
 }
@@ -196,7 +194,7 @@ hr {
 
 
 /*------------------------   footer*/
-footer {
+.footer {
 	background-color: #005fff;
 	margin-top: 50px;
 	padding: 10px 0;
@@ -251,19 +249,20 @@ footer div p a {
 .hide {
 	display: none;
 }
-
-turno-indicator {
-	border: 4px solid #00FF00;
-	background-color: #98FB98;
+.down {
+	position: static
 }
-#container-start {
-
+.Turno {
+	display: flex;
+	justify-content: space-between;
+	height: 100px;
+	align-items: flex-end;
 }
-#container-choose-playerName {
-	display: none;
+.choosePlayerName {
+	display: grid;
 }
-#container-choose-pokemon {
-	display: none;
+.containerChoosePokemon {
+	display: block;
 }
 #container-pokemonInfo-battle {
 	display: none;
