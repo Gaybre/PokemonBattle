@@ -1,3 +1,4 @@
+/*
 const URL_API = 'https://pokeapi.co/api/v2/'
 const URL_POKE = 'pokemon/id'
 
@@ -17,4 +18,23 @@ function elegirPokemon(id){
 
 }
 
-elegirPokemon(1)
+//elegirPokemon(1)
+*/
+const $listaPD = document.getElementById('pokemonList')
+var ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+//console.log(ids)
+
+async function ShowPokemonAvailable() {
+	const URL_API_POKEMON = 'https://pokeapi.co/api/v2/pokemon/id'
+	async function getPokemon(id) {	
+		const pokemon = await fetch(URL_API_POKEMON.replace('id', id))
+		const poke 	  = await pokemon.json()
+		//console.log('Lista de Pokemon:', poke)
+		$listaPD.innerHTML += await poke.id+'. '+poke.name+'<br />'
+	}
+	for(id in ids) {
+		//console.log(id)
+		getPokemon(ids[id])
+	}
+}
+ShowPokemonAvailable()
