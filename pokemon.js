@@ -17,7 +17,7 @@ function elegirPokemon(id){
 elegirPokemon(1)
 */
 const $listaPD = document.getElementById('pokemonList')
-var ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+var ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 0]
 var listaPD = []
 
 async function ShowPokemonAvailable() {
@@ -25,11 +25,19 @@ async function ShowPokemonAvailable() {
 	async function getPokemon(id) {	
 		const pokemon = await fetch(URL_API_POKEMON.replace('id', id))
 		const poke 	  = await pokemon.json()
-		$listaPD.innerHTML += poke.id+'. '+poke.name+'<br />'
-		listaPD.push(poke)
+		if (poke.id>0) {
+			$listaPD.innerHTML += poke.id+'. '+poke.name+'<br />'
+			listaPD.push(poke)
+		}else{
+			throw new Error('No se pudo obtener el Pokemon')
+		}
 	}
 	for(id in ids) {
-		await getPokemon(ids[id])
+		try {
+			await getPokemon(ids[id])
+		}catch(error) {
+			alert(error)
+		}
 	}
 }
 ShowPokemonAvailable()
