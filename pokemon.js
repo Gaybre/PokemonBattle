@@ -1,36 +1,24 @@
-/*
-const URL_API = 'https://pokeapi.co/api/v2/'
-const URL_POKE = 'pokemon/id'
-const OPTS = {crossDomain: true}
-
-function elegirPokemon(id){
-    const POKEMON = `${URL_API}${URL_POKE.replace('id', id)}`
-    new Promise(function(resolve, reject){
-        $
-        .get(POKEMON, OPTS, function(poke){
-            resolve(poke)
-        })
-    })
-    .then(poke => console.log(`Elegiste a ${poke.name}`))
-    .catch(() => console.log('Se tuvo un error al elegir al Pokemon'))
-}
-elegirPokemon(1)
-*/
 const $listaPD = document.getElementById('pokemonList')
-var ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 0]
+const TOTAL_POKEMON_DISPONIBLES = 50
+var ids = new Array(TOTAL_POKEMON_DISPONIBLES)
 var listaPD = []
+
+for(let i=0; i<ids.length; i++){
+	let j = i+1
+	ids[i] = j
+}
 
 async function ShowPokemonAvailable() {
 	const URL_API_POKEMON = 'https://pokeapi.co/api/v2/pokemon/id'
 	async function getPokemon(id) {	
 		const pokemon = await fetch(URL_API_POKEMON.replace('id', id))
 		const poke 	  = await pokemon.json()
-		if (poke.id>0) {
+		if (poke.id != null) {
 			$listaPD.innerHTML += poke.id+'. '+poke.name+'<br />'
 			listaPD.push(poke)
-		}else{
-			throw new Error('No se pudo obtener el Pokemon')
+			return poke
 		}
+		throw new Error(`No se pudo obtener el Pokemon ${id}`)
 	}
 	for(id in ids) {
 		try {
