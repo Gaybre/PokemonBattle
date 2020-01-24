@@ -28,4 +28,3 @@ async function ShowPokemonAvailable() {
 		}
 	}
 }
-ShowPokemonAvailable()
