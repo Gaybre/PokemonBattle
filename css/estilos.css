@@ -1,9 +1,13 @@
-﻿body {
+﻿html {
+	min-height: 100%;
+	position: relative;
+}
+body {
 	margin: 0px;
+	margin-bottom: 250px;
 	background-color: #00CED1;
 	font-family: 'Varela Round', sans-serif;
 }
-
 header {
 	background-color: #F81820;
 	padding: 20px;
@@ -196,13 +200,12 @@ hr {
 /*------------------------   footer*/
 .footer {
 	background-color: #005fff;
-	margin-top: 50px;
 	padding: 10px 0;
 	width: 100%;
-	bottom: 0px;
+	bottom: 0;
 	font-family: 'arial';
 	font-size: 0.8em;
-	position: fixed;
+	position: absolute;
 }
 
 #footer-container {
@@ -248,9 +251,6 @@ footer div p a {
 /*------------------------   clases para iterar componentes */
 .hide {
 	display: none;
-}
-.down {
-	position: static
 }
 .Turno {
 	display: flex;

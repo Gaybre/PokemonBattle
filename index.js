@@ -27,7 +27,7 @@ function empezar(){
 	$instructions.classList.toggle('start')
 	$turno.classList.toggle('Turno')
 	$chosePlayerName.classList.toggle('choosePlayerName')
-	$footer.classList.add('down')
+	//$footer.classList.add('down')
 	setTimeout(() => $p1.classList.toggle('indicator'), 500)
 }
 function playerName() {
