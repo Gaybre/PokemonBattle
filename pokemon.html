@@ -48,7 +48,7 @@
 			</h2>
 		    <div class="container-playerName">
 		      	<img src="https://vignette.wikia.nocookie.net/bohaterowie/images/2/2f/Ash_anime.png/revision/latest/top-crop/width/360/height/450?cb=20190703073831&path-prefix=pl" alt="Maestro Pokemon" width="200">
-				<input type="text" placeholder="Juan Gaybre" class="txt" id="choosingPlayerName">
+				<input type="text" placeholder="Juan Gaybre" class="txt" id="txtPlayerName">
 				<button class="btn" id="btnPlayerName">Aceptar</button>
 		    </div>
 		</div>
@@ -73,15 +73,14 @@
 		  			<p>
 						Selecciona, ingresa el ID y presiona Aceptar solo si estas listo para inliciar la batalla
 					</p>
-		  			<input type="text" placeholder="ID" class="txt" id="pkemonSelected">
+		  			<input type="text" placeholder="ID" class="txt" id="txtPokemonSelected">
 		  			<button class="btn" id="btnPokemonName">Aceptar</button>
 		  		</section>
 		    </div>
 		</div>
-		<div id="container-timer">
-			<p>Que gane el mejor!!</p>
+		<div class="timer hide" id="container-timer">
+			<p id="timer">Que gane el mejor!!</p>
 			<img src="https://media.giphy.com/media/WBpJbqS9hFsic/giphy.gif" width="200" class="imgcharging" id="charging">
-			<p id="timer"> 3.. 2.. 1..</p>
 		</div>
 		<div class="container" id="container-pokemonInfo-battle">
 			<div class="container-pokemonInfo">
@@ -92,9 +91,9 @@
 						<p>Vida:</p>
 					</div>
 					<div class="pokemonElegido" id="pokemonElegido1">
-						<p class="display-text" id="pokemonName">Pikachu</p>
-						<p class="display-text" id="pokemonType">Electrico</p>
-						<p class="display-text" id="pokemonLife">100</p>
+						<p class="display-text" id="pokemonName1">Pikachu</p>
+						<p class="display-text" id="pokemonType1">Electrico</p>
+						<p class="display-text" id="pokemonLife1">100</p>
 					</div>
 				</div>
 				<div class="pokemonInfo">
@@ -104,9 +103,9 @@
 						<p>Vida:</p>
 					</div>
 					<div class="pokemonElegido" id="pokemonElegido2">
-						<p class="display-text" id="pokemonName">Charmander</p>
-						<p class="display-text" id="pokemonType">Fuego</p>
-						<p class="display-text" id="pokemonLife">100</p>
+						<p class="display-text" id="pokemonName2">Charmander</p>
+						<p class="display-text" id="pokemonType2">Fuego</p>
+						<p class="display-text" id="pokemonLife2">100</p>
 					</div>
 				</div>
 			</div>
