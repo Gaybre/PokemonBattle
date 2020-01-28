@@ -17,9 +17,11 @@ const $timer			= document.getElementById('container-timer')
 const $infoBattle 		= document.getElementById('container-pokemonInfo-battle')
 const $pName1 			= document.getElementById('pokemonName1')
 const $pType1			= document.getElementById('pokemonType1')
+const $pLevel			= document.getElementById('pokemonLevel1')
 const $pLife1			= document.getElementById('pokemonLife1')
 const $pName2 			= document.getElementById('pokemonName2')
 const $pType2			= document.getElementById('pokemonType2')
+const $pLeve2			= document.getElementById('pokemonLevel2')
 const $pLife2			= document.getElementById('pokemonLife2')
 
 var namePlayer1, namePlayer2
@@ -74,28 +76,32 @@ function playerName() {
 	}
 }
 function loadPokemonInfo() {
-	$pName1.innerHTML = pokemonSelectedBattle1.name
-	$pType1.innerHTML = pokemonSelectedBattle1.type
+	$pName1.innerHTML = pokemonSelected1.name
+	$pType1.innerHTML = pokemonSelected1.type
+	$pLevel.innerHTML = pokemonSelected1.level
+	$pLife1.innerHTML = pokemonSelected1.vida
 
-	$pName2.innerHTML = pokemonSelectedBattle2.name
-	$pType2.innerHTML = pokemonSelectedBattle2.type
+	$pName2.innerHTML = pokemonSelected2.name
+	$pType2.innerHTML = pokemonSelected2.type
+	$pLeve2.innerHTML = pokemonSelected2.level
+	$pLife2.innerHTML = pokemonSelected2.vida
 }
 function makePokemon(n) {
 	var i  = n-1
 	var pk = listaPD[i]
 	pokemonSelected = new Pokemon(pk.id, pk.name, pk.types[0].type.name, pk.base_experience, 100)
 	if (turno == 1) {
-		pokemonSelectedBattle1 = pokemonSelected
+		pokemonSelected1 = pokemonSelected
 		turno++
 		$txtPokemonID.value = ''
 		$p1.classList.toggle('indicator')
 		$p2.classList.toggle('indicator')
-		alert(`${namePlayer1}, Elejiste a ${pokemonSelectedBattle1.name}`)
+		alert(`${namePlayer1}, Elejiste a ${pokemonSelected1.name}`)
 	} else{
-		pokemonSelectedBattle2 = pokemonSelected
+		pokemonSelected2 = pokemonSelected
 		turno--
 		$p2.classList.toggle('indicator')
-		alert(`${namePlayer2}, Elejiste a ${pokemonSelectedBattle2.name}`)
+		alert(`${namePlayer2}, Elejiste a ${pokemonSelected2.name}`)
 		$chosePokemon.classList.toggle('containerChoosePokemon')
 		$timer.classList.toggle('hide')
 		setTimeout(() => {

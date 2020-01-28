@@ -13,8 +13,8 @@ const TOTAL_POKEMON_DISPONIBLES = 50
 var ids = new Array(TOTAL_POKEMON_DISPONIBLES)
 var listaPD = []
 var pokemonSelected
-var pokemonSelectedBattle1
-var pokemonSelectedBattle2
+var pokemonSelected1
+var pokemonSelected2
 
 for(let i=0; i<ids.length; i++){
 	let j = i+1
