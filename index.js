@@ -24,6 +24,11 @@ const $pType2			= document.getElementById('pokemonType2')
 const $pLeve2			= document.getElementById('pokemonLevel2')
 const $pLife2			= document.getElementById('pokemonLife2')
 const $battleMap		= document.getElementById('battleMapID')
+const $battleButtons1	= document.getElementById('battleButtons1')
+const $battleButtons2	= document.getElementById('battleButtons2')
+const $imgPoke1			= document.getElementById('imgPoke1')
+const $imgPoke2			= document.getElementById('imgPoke2')
+const $asd 				= document.getElementById('qwe')
 
 var namePlayer1, namePlayer2
 var turno = 1
@@ -31,6 +36,16 @@ var turno = 1
 $start.addEventListener('click', empezar)
 $btnPlayer.addEventListener('click', playerName)
 $btnPokemon.addEventListener('click', selecPokemon)
+
+$asd.addEventListener('click', () => {
+	$battleButtons1.classList.toggle('turnButtons')
+	$battleButtons2.classList.toggle('turnButtons')
+	$p1.classList.toggle('indicator')
+	$p2.classList.toggle('indicator')
+	$battleMap.classList.toggle('map2')
+	$imgPoke1.classList.toggle('imgEnd')
+	$imgPoke2.classList.toggle('imgEnd')
+})
 
 function showInstructions() {
 	setTimeout(()=> {
@@ -76,21 +91,35 @@ function playerName() {
 		break
 	}
 }
+function setImgAttributes($element, attributes) {
+	for(let attribute in attributes)
+		$element.setAttribute(attribute, attributes[attribute])
+}
 function loadPokemonInfo() {
 	$pName1.innerHTML = pokemonSelected1.name
 	$pType1.innerHTML = pokemonSelected1.type
 	$pLevel.innerHTML = pokemonSelected1.level
 	$pLife1.innerHTML = pokemonSelected1.vida
-
+	setImgAttributes($imgPoke1, {
+		src: `${pokemonSelected1.imgBack}`,
+		width: 120,
+		height: 120,
+	})
+	
 	$pName2.innerHTML = pokemonSelected2.name
 	$pType2.innerHTML = pokemonSelected2.type
 	$pLeve2.innerHTML = pokemonSelected2.level
 	$pLife2.innerHTML = pokemonSelected2.vida
+	setImgAttributes($imgPoke2, {
+		src: `${pokemonSelected2.imgFront}`,
+		width: 120,
+		height: 120,
+	})
 }
 function makePokemon(n) {
 	var i  = n-1
 	var pk = listaPD[i]
-	pokemonSelected = new Pokemon(pk.id, pk.name, pk.types[0].type.name, pk.base_experience, 100)
+	pokemonSelected = new Pokemon(pk.id, pk.name, pk.types[0].type.name, pk.base_experience, 100, pk.sprites.front_default, pk.sprites.back_default)
 	if (turno == 1) {
 		pokemonSelected1 = pokemonSelected
 		turno++
@@ -111,6 +140,7 @@ function makePokemon(n) {
 			$infoBattle.classList.toggle('pokemonInfoBattle')
 			$p1.classList.toggle('indicator')
 			$battleButtons1.classList.toggle('turnButtons')
+			$imgPoke1.classList.toggle('imgEnd')
 		}, 2000)
 	}
 }

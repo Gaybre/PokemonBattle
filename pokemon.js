@@ -1,10 +1,12 @@
 class Pokemon {
-	constructor(id, name, type, level, vida) {
-		this.id 	= id
-		this.name 	= name
-		this.type 	= type
-		this.level 	= level
-		this.vida 	= vida
+	constructor(id, name, type, level, vida, imgFront, imgBack) {
+		this.id 	  = id
+		this.name 	  = name
+		this.type 	  = type
+		this.level 	  = level
+		this.vida	  = vida
+		this.imgFront = imgFront
+		this.imgBack  = imgBack
 	}
 }
 
