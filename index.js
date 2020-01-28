@@ -23,6 +23,7 @@ const $pName2 			= document.getElementById('pokemonName2')
 const $pType2			= document.getElementById('pokemonType2')
 const $pLeve2			= document.getElementById('pokemonLevel2')
 const $pLife2			= document.getElementById('pokemonLife2')
+const $battleMap		= document.getElementById('battleMapID')
 
 var namePlayer1, namePlayer2
 var turno = 1
@@ -39,7 +40,7 @@ function showInstructions() {
 }
 function empezar(){
 	$instructions.classList.toggle('start')
-	$turno.classList.toggle('Turno')
+	$turno.classList.toggle('turno')
 	$chosePlayerName.classList.toggle('choosePlayerName')
 	setTimeout(() => $p1.classList.toggle('indicator'), 500)
 }
@@ -109,6 +110,7 @@ function makePokemon(n) {
 			$timer.classList.toggle('hide')
 			$infoBattle.classList.toggle('pokemonInfoBattle')
 			$p1.classList.toggle('indicator')
+			$battleButtons1.classList.toggle('turnButtons')
 		}, 2000)
 	}
 }

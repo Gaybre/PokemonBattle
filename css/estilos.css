@@ -188,13 +188,10 @@ hr {
 	flex-direction: column;
 	border-radius: 10px;
 	justify-content: center;
-	height: auto;
-}
-#battleButtons1 {
-	align-self: flex-end;
-}
-#battleButtons2 {
 	align-self: flex-start;
+}
+.turnButtons {
+	align-self: flex-end;
 }
 .btnAtaque {
 	margin-bottom: 10px;
@@ -204,10 +201,14 @@ hr {
 }
 .battleMap {
 	background-image: url('https://www.tynker.com/projects/images/5bfdfa86d2fc7b714627a4e4/background-scene---2.png');
-	width: 398px;
-	height: 240px;
+	background-size: cover;
+	width: 400px;
+	height: 250px;
 	text-align: center;
 	margin: 10px 0;
+}
+.rotar{
+    transform: scaleX(-1);
 }
 #battle-text {
 	background-color: #fff;
