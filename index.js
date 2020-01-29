@@ -38,6 +38,7 @@ $btnPlayer.addEventListener('click', playerName)
 $btnPokemon.addEventListener('click', selecPokemon)
 
 $asd.addEventListener('click', () => {
+	changeImgPosition()
 	$battleButtons1.classList.toggle('turnButtons')
 	$battleButtons2.classList.toggle('turnButtons')
 	$p1.classList.toggle('indicator')
@@ -100,21 +101,13 @@ function loadPokemonInfo() {
 	$pType1.innerHTML = pokemonSelected1.type
 	$pLevel.innerHTML = pokemonSelected1.level
 	$pLife1.innerHTML = pokemonSelected1.vida
-	setImgAttributes($imgPoke1, {
-		src: `${pokemonSelected1.imgBack}`,
-		width: 120,
-		height: 120,
-	})
 	
 	$pName2.innerHTML = pokemonSelected2.name
 	$pType2.innerHTML = pokemonSelected2.type
 	$pLeve2.innerHTML = pokemonSelected2.level
 	$pLife2.innerHTML = pokemonSelected2.vida
-	setImgAttributes($imgPoke2, {
-		src: `${pokemonSelected2.imgFront}`,
-		width: 120,
-		height: 120,
-	})
+
+	imgTurnPokemon1()
 }
 function makePokemon(n) {
 	var i  = n-1
@@ -161,5 +154,45 @@ function selecPokemon() {
 			}
 			break
 	}
+}
+function changeImgPosition() {
+	switch(turno) {
+		case 1:
+			imgTurnPokemon2()
+			$imgPoke1.classList.toggle('rotar')
+			$imgPoke2.classList.toggle('rotar')	
+			turno++
+			break
+		case 2:
+			imgTurnPokemon1()
+			$imgPoke1.classList.toggle('rotar')
+			$imgPoke2.classList.toggle('rotar')
+			turno--
+			break
+	}
+}
+function imgTurnPokemon1() {
+	setImgAttributes($imgPoke1, {
+		src: `${pokemonSelected1.imgBack}`,
+		width: 150,
+		height: 150,
+	})
+	setImgAttributes($imgPoke2, {
+		src: `${pokemonSelected2.imgFront}`,
+		width: 120,
+		height: 120,
+	})
+}
+function imgTurnPokemon2() {
+	setImgAttributes($imgPoke1, {
+		src: `${pokemonSelected1.imgFront}`,
+		width: 120,
+		height: 120,
+	})
+	setImgAttributes($imgPoke2, {
+		src: `${pokemonSelected2.imgBack}`,
+		width: 150,
+		height: 150,
+	})
 }
 showInstructions()
