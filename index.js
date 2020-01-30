@@ -38,6 +38,7 @@ $btnPlayer.addEventListener('click', playerName)
 $btnPokemon.addEventListener('click', selecPokemon)
 
 $asd.addEventListener('click', () => {
+	pokeAtack(turno)
 	changeImgPosition()
 	$battleButtons1.classList.toggle('turnButtons')
 	$battleButtons2.classList.toggle('turnButtons')
@@ -112,7 +113,12 @@ function loadPokemonInfo() {
 function makePokemon(n) {
 	var i  = n-1
 	var pk = listaPD[i]
-	pokemonSelected = new Pokemon(pk.id, pk.name, pk.types[0].type.name, pk.base_experience, 100, pk.sprites.front_default, pk.sprites.back_default)
+	const movesPokemon = pk.moves.slice(0, 3).map(z => {
+		return {
+			name: z.move.name
+		}
+	})
+	pokemonSelected = new Pokemon(pk.id, pk.name, pk.types[0].type.name, movesPokemon, pk.base_experience, 100, pk.sprites.front_default, pk.sprites.back_default)
 	if (turno == 1) {
 		pokemonSelected1 = pokemonSelected
 		turno++
@@ -194,5 +200,16 @@ function imgTurnPokemon2() {
 		width: 150,
 		height: 150,
 	})
+}
+function pokeAtack(turno) {
+	if (turno === 1) {
+		pokemonSelected1.atacar(pokemonSelected1.name)
+		pokemonSelected2.vida -= 20
+		$pLife2.innerHTML = pokemonSelected2.vida	
+	}else{
+		pokemonSelected2.atacar(pokemonSelected2.name)
+		pokemonSelected1.vida -= 20
+		$pLife1.innerHTML = pokemonSelected1.vida
+	}
 }
 showInstructions()

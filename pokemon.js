@@ -1,16 +1,22 @@
 class Pokemon {
-	constructor(id, name, type, level, vida, imgFront, imgBack) {
+	constructor(id, name, type, attacks, level, vida, imgFront, imgBack) {
 		this.id 	  = id
 		this.name 	  = name
 		this.type 	  = type
+		this.attacks  = attacks
 		this.level 	  = level
 		this.vida	  = vida
 		this.imgFront = imgFront
 		this.imgBack  = imgBack
 	}
+	atacar(name) {
+		$txtBattle.innerHTML = `${name} ha atacado`
+		setTimeout(() => $txtBattle.innerHTML = 'La battalla continua...', 1500)
+	}
 }
 
-const $listaPD = document.getElementById('pokemonList')
+const $listaPD   = document.getElementById('pokemonList')
+const $txtBattle = document.getElementById('battle-text')
 const TOTAL_POKEMON_DISPONIBLES = 50
 var ids = new Array(TOTAL_POKEMON_DISPONIBLES)
 var listaPD = []
