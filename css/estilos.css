@@ -108,7 +108,7 @@ hr {
 	justify-content: space-around;
 	align-items: flex-end;
 	flex-wrap: wrap;
-	
+
 }
 .listaPokemon {
 	width: 300px;
@@ -183,7 +183,7 @@ hr {
 }
 .battleButtons {
 	background-color: #98FB98;
-	width: 80px;
+	width: 140px;
 	display: flex;
 	flex-direction: column;
 	border-radius: 10px;
@@ -194,10 +194,11 @@ hr {
 	align-self: flex-end;
 }
 .btnAtaque {
+	padding: 5px;
 	margin-bottom: 10px;
 	border-radius: 5px;
 	font-family: 'Orbitron', sans-serif;
-	font-size: 12px;
+	font-size: 14px;
 }
 .battleMap {
 	background-image: url('../images/background1.png');
@@ -252,7 +253,7 @@ hr {
 	border-radius: 5px;
 	background-color: black;
 	padding: 5px;
-	color: white; 
+	color: white;
 }
 .footer-redes-contacto {
 	display: flex;

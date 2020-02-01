@@ -9,9 +9,8 @@ class Pokemon {
 		this.imgFront = imgFront
 		this.imgBack  = imgBack
 	}
-	atacar(name) {
-		$txtBattle.innerHTML = `${name} ha atacado`
-		setTimeout(() => $txtBattle.innerHTML = 'La battalla continua...', 1500)
+	atacar(obj, attack) {
+		$txtBattle.innerHTML = `${obj.name} ha usado ${attack}  <br />La battalla continua...`
 	}
 }
 
@@ -31,7 +30,7 @@ for(let i=0; i<ids.length; i++){
 
 async function ShowPokemonAvailable() {
 	const URL_API_POKEMON = 'https://pokeapi.co/api/v2/pokemon/id'
-	async function getPokemon(id) {	
+	async function getPokemon(id) {
 		const pokemon = await fetch(URL_API_POKEMON.replace('id', id))
 		const poke 	  = await pokemon.json()
 		if (poke.id != null) {
