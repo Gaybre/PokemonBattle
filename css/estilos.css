@@ -317,3 +317,15 @@ footer div p a {
 .pokemonInfoBattle {
 	display: block;
 }
+.pokeByeBye {
+	animation: 4000ms fadeOut;
+	animation-fill-mode: forwards
+}
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}

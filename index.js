@@ -221,7 +221,7 @@ function validarGanador() {
 		turnButtonsOf()
 		$pLife1.innerHTML = 0
 		$p2.classList.toggle('indicator')
-		$txtBattle.innerHTML = 'Fin de la batalla !!'
+		$txtBattle.innerHTML += '<br  />Fin de la batalla !!'
 		setImgAttributes($imgPoke2, {
 			src: `${pokemonSelected2.imgFront}`,
 			width: 250,
@@ -232,12 +232,13 @@ function validarGanador() {
 		},500)
 		setTimeout(() => {
 			$txtBattle.innerHTML += '<br />'+pokemonSelected1.name+': No me quiero ir Sr. '+namePlayer1+'...'
+			$imgPoke1.classList.add('pokeByeBye')
 		}, 600)
 	} else if (pokemonSelected2.vida < 1) {
 		turnButtonsOf()
 		$pLife2.innerHTML = 0
 		$p1.classList.toggle('indicator')
-		$txtBattle.innerHTML = 'Fin de la batalla !!'
+		$txtBattle.innerHTML += '<br  />Fin de la batalla !!'
 		setImgAttributes($imgPoke1, {
 			src: `${pokemonSelected1.imgFront}`,
 			width: 250,
@@ -248,6 +249,7 @@ function validarGanador() {
 		}, 500)
 		setTimeout(() => {
 			$txtBattle.innerHTML += '<br />'+pokemonSelected2.name+': No me quiero ir Sr. '+namePlayer2+'...'
+			$imgPoke2.classList.add('pokeByeBye')
 		}, 600)
 	}else{
 		changeImgPosition()
