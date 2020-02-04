@@ -102,6 +102,9 @@ hr {
 	display: grid;
 	justify-content: center;
 }
+.form {
+	display: inherit;
+}
 .txt {
 	margin: 10px 0;
 	padding: 5px;

@@ -1,39 +1,41 @@
-const $start 						= document.getElementById('btnStart')
-const $turno 						= document.getElementById('turno')
-const $instructions 		= document.getElementById('container-start')
-const $imgCharging 			= document.getElementById('charging')
-const $footer 					= document.getElementById('footer')
+const $start 			= document.getElementById('btnStart')
+const $turno 			= document.getElementById('turno')
+const $instructions 	= document.getElementById('container-start')
+const $imgCharging 		= document.getElementById('charging')
+const $footer 			= document.getElementById('footer')
 const $chosePlayerName  = document.getElementById('container-choose-playerName')
-const $p1 							= document.getElementById('p1')
-const $p2 							= document.getElementById('p2')
-const $btnPlayer 				= document.getElementById('btnPlayerName')
-const $txtPlayer 				= document.getElementById('txtPlayerName')
-const $playerName1 			= document.getElementById('namePlayer1')
-const $playerName2 			= document.getElementById('namePlayer2')
-const $chosePokemon 		= document.getElementById('container-choose-pokemon')
-const $txtPokemonID			= document.getElementById('txtPokemonSelected')
-const $btnPokemon				= document.getElementById('btnPokemonName')
-const $timer						= document.getElementById('container-timer')
-const $infoBattle 			= document.getElementById('container-pokemonInfo-battle')
-const $pName1 					= document.getElementById('pokemonName1')
-const $pType1						= document.getElementById('pokemonType1')
-const $pLevel						= document.getElementById('pokemonLevel1')
-const $pLife1						= document.getElementById('pokemonLife1')
-const $pName2 					= document.getElementById('pokemonName2')
-const $pType2						= document.getElementById('pokemonType2')
-const $pLeve2						= document.getElementById('pokemonLevel2')
-const $pLife2						= document.getElementById('pokemonLife2')
-const $battleMap				= document.getElementById('battleMapID')
-const $battleButtons1		= document.getElementById('battleButtons1')
-const $battleButtons2		= document.getElementById('battleButtons2')
-const $imgPoke1					= document.getElementById('imgPoke1')
-const $imgPoke2					= document.getElementById('imgPoke2')
-const $ataque1a 				= document.getElementById('ataque1a')
-const $ataque2a					= document.getElementById('ataque2a')
-const $ataque3a					= document.getElementById('ataque3a')
-const $ataque1b 				= document.getElementById('ataque1b')
-const $ataque2b					= document.getElementById('ataque2b')
-const $ataque3b					= document.getElementById('ataque3b')
+const $p1 				= document.getElementById('p1')
+const $p2 				= document.getElementById('p2')
+const $btnPlayer 		= document.getElementById('btnPlayerName')
+const $txtPlayer 		= document.getElementById('txtPlayerName')
+const $formName			= document.getElementById('formName')
+const $playerName1 		= document.getElementById('namePlayer1')
+const $playerName2 		= document.getElementById('namePlayer2')
+const $chosePokemon 	= document.getElementById('container-choose-pokemon')
+const $txtPokemonID		= document.getElementById('txtPokemonSelected')
+const $btnPokemon		= document.getElementById('btnPokemonName')
+const $formID			= document.getElementById('formID')
+const $timer			= document.getElementById('container-timer')
+const $infoBattle 		= document.getElementById('container-pokemonInfo-battle')
+const $pName1 			= document.getElementById('pokemonName1')
+const $pType1			= document.getElementById('pokemonType1')
+const $pLevel			= document.getElementById('pokemonLevel1')
+const $pLife1			= document.getElementById('pokemonLife1')
+const $pName2 			= document.getElementById('pokemonName2')
+const $pType2			= document.getElementById('pokemonType2')
+const $pLeve2			= document.getElementById('pokemonLevel2')
+const $pLife2			= document.getElementById('pokemonLife2')
+const $battleMap		= document.getElementById('battleMapID')
+const $battleButtons1	= document.getElementById('battleButtons1')
+const $battleButtons2	= document.getElementById('battleButtons2')
+const $imgPoke1			= document.getElementById('imgPoke1')
+const $imgPoke2			= document.getElementById('imgPoke2')
+const $ataque1a 		= document.getElementById('ataque1a')
+const $ataque2a			= document.getElementById('ataque2a')
+const $ataque3a			= document.getElementById('ataque3a')
+const $ataque1b 		= document.getElementById('ataque1b')
+const $ataque2b			= document.getElementById('ataque2b')
+const $ataque3b			= document.getElementById('ataque3b')
 
 var namePlayer1, namePlayer2
 var turno = 1
@@ -42,6 +44,14 @@ var ganador
 $start.addEventListener('click', empezar)
 $btnPlayer.addEventListener('click', playerName)
 $btnPokemon.addEventListener('click', selecPokemon)
+$formName.addEventListener('submit', (ev) => {
+	ev.preventDefault()
+	playerName()
+})
+$formID.addEventListener('submit', (ev) => {
+	ev.preventDefault()
+	selecPokemon()
+})
 
 function showInstructions() {
 	setTimeout(()=> {
@@ -208,9 +218,10 @@ function loadAttacks(ps1, ps2) {
 }
 function validarGanador() {
 	if (pokemonSelected1.vida < 1) {
+		turnButtonsOf()
 		$pLife1.innerHTML = 0
 		$p2.classList.toggle('indicator')
-		$txtBattle.innerHTML = 'Fin de la batalla <br />'+pokemonSelected1.name+': No me quiero ir Sr. '+namePlayer1
+		$txtBattle.innerHTML = 'Fin de la batalla !!'
 		setImgAttributes($imgPoke2, {
 			src: `${pokemonSelected2.imgFront}`,
 			width: 250,
@@ -219,10 +230,14 @@ function validarGanador() {
 		setTimeout(() => {
 			alert(`El ganador del combate fue ${pokemonSelected2.name} del maestro Pokemon ${namePlayer2}`)
 		},500)
+		setTimeout(() => {
+			$txtBattle.innerHTML += '<br />'+pokemonSelected1.name+': No me quiero ir Sr. '+namePlayer1+'...'
+		}, 600)
 	} else if (pokemonSelected2.vida < 1) {
+		turnButtonsOf()
 		$pLife2.innerHTML = 0
 		$p1.classList.toggle('indicator')
-		$txtBattle.innerHTML = 'Fin de la batalla <br />'+pokemonSelected2.name+': No me quiero ir Sr. '+namePlayer2
+		$txtBattle.innerHTML = 'Fin de la batalla !!'
 		setImgAttributes($imgPoke1, {
 			src: `${pokemonSelected1.imgFront}`,
 			width: 250,
@@ -231,6 +246,9 @@ function validarGanador() {
 		setTimeout(() => {
 			alert(`El ganador del combate fue ${pokemonSelected1.name} del maestro Pokemon ${namePlayer1}`)
 		}, 500)
+		setTimeout(() => {
+			$txtBattle.innerHTML += '<br />'+pokemonSelected2.name+': No me quiero ir Sr. '+namePlayer2+'...'
+		}, 600)
 	}else{
 		changeImgPosition()
 		setTimeout(() => $txtBattle.innerHTML += `<br />La battalla continua...`, 1000)
@@ -318,6 +336,15 @@ function turnButtonsB() {
 	$ataque1b.addEventListener('click', pokeAtack)
 	$ataque2b.addEventListener('click', pokeAtack)
 	$ataque3b.addEventListener('click', pokeAtack)
+
+	$ataque1a.removeEventListener('click', pokeAtack)
+	$ataque2a.removeEventListener('click', pokeAtack)
+	$ataque3a.removeEventListener('click', pokeAtack)
+}
+function turnButtonsOf() {
+	$ataque1b.removeEventListener('click', pokeAtack)
+	$ataque2b.removeEventListener('click', pokeAtack)
+	$ataque3b.removeEventListener('click', pokeAtack)	
 
 	$ataque1a.removeEventListener('click', pokeAtack)
 	$ataque2a.removeEventListener('click', pokeAtack)
