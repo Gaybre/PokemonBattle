@@ -39,15 +39,29 @@ h3 {
 
 .start {
 	display: grid;
+	text-align: center;
 }
-
+.instructions {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.li {
+	margin-top: 10px;
+	text-align: left;
+}
+#starterimg {
+	height: 150px;
+}
 
 #btnStart {
 	width: 200px;
 	height: 50px;
 	font-size: 20px;
 	margin: 20px auto;
-	margin-top: 100px;
+	margin-top: 50px;
 }
 hr {
 	width: 90%;

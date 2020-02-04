@@ -253,7 +253,28 @@ function pokeAtack(attack) {
 		pokemonSelected2.attacks[0].name
 		pokemonSelected2.attacks[1].name
 		pokemonSelected2.attacks[2].name
-		*/
+
+			if (obj1.level > obj2.level) {
+				if ((obj1.level/2)>obj2.level) {
+					L = 2
+				}else{
+					L = 1.5
+				}
+			}else{
+				L = 1
+			}
+
+			if (obj1.type == water) {
+
+			}
+
+			var random = Math.random()
+			if (random > 4) {
+				D = 0
+			}else {
+				D = 15
+			}
+			*/
 		if (turno === 1) {
 			if (pokemonSelected1.level > pokemonSelected2.level) {
 				if ((pokemonSelected1.level/2)>pokemonSelected2.level) {
@@ -264,7 +285,6 @@ function pokeAtack(attack) {
 			}else{
 				powerAtack = 15
 			}
-
 			pokemonSelected1.atacar(pokemonSelected1, attack)
 			pokemonSelected2.vida -= powerAtack
 			$pLife2.innerHTML = pokemonSelected2.vida
