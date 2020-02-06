@@ -10,18 +10,20 @@ class Pokemon {
 		this.imgBack  = imgBack
 	}
 	atacar(obj, attack) {
-		$txtBattle.innerHTML = `${obj.name} ha usado ${attack.target.value}`
+		$txtBattle.innerHTML = `<strong>${obj.name}</strong> usó ${attack.target.value}`
 	}
 }
 
 const $listaPD   = document.getElementById('pokemonList')
+const $pokeGif   = document.getElementById('gifpokemon')
 const $txtBattle = document.getElementById('battle-text')
-const TOTAL_POKEMON_DISPONIBLES = 100
+const TOTAL_POKEMON_DISPONIBLES = 150
 var ids = new Array(TOTAL_POKEMON_DISPONIBLES)
 var listaPD = []
 var pokemonSelected
 var pokemonSelected1
 var pokemonSelected2
+var availableList = false
 
 for(let i=0; i<ids.length; i++){
 	let j = i+1
@@ -33,6 +35,12 @@ async function ShowPokemonAvailable() {
 	async function getPokemon(id) {
 		const pokemon = await fetch(URL_API_POKEMON.replace('id', id))
 		const poke 	  = await pokemon.json()
+		if (id == (TOTAL_POKEMON_DISPONIBLES - 1)) {
+			setTimeout(() => {
+				$pokeGif.classList.toggle('hide')
+				$listaPD.classList.toggle('hide')
+			}, 2000)
+		}
 		if (poke.id != null) {
 			$listaPD.innerHTML += poke.id+'. '+poke.name+'<br />'
 			listaPD.push(poke)

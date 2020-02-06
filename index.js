@@ -90,9 +90,9 @@ function playerName() {
 					$p2.classList.toggle('indicator')
 					$chosePlayerName.classList.toggle('choosePlayerName')
 					$chosePokemon.classList.toggle('containerChoosePokemon')
-					setTimeout(() => $p1.classList.toggle('indicator'), 500)
 					ShowPokemonAvailable()
 				}, 400)
+				setTimeout(() => $p1.classList.toggle('indicator'), 500)
 			}
 		break
 	}
@@ -216,41 +216,32 @@ function loadAttacks(ps1, ps2) {
 	setImgAttributes($ataque2b, {value: `${b[1].name}`})
 	setImgAttributes($ataque3b, {value: `${b[2].name}`})
 }
+function ganador($img, ganador, user) {
+	setImgAttributes($img, {
+	src: `${ganador.imgFront}`,
+	width: 250,
+	height: 250,
+	})
+	$txtBattle.innerHTML += ' ha sido un golpe letal<br/>Fin de la batalla !!'
+	setTimeout(() => alert(`El ganador del combate fue ${ganador.name} del maestro Pokemon ${user}`), 1000)
+}
+function perdedor($img, {name}, user) {
+	$txtBattle.innerHTML = `Fin de la batalla !!<br /><strong>${name}:</strong> No me quiero ir Sr. ${user}....`
+	$img.classList.add('pokeByeBye')
+}
 function validarGanador() {
 	if (pokemonSelected1.vida < 1) {
 		turnButtonsOf()
 		$pLife1.innerHTML = 0
 		$p2.classList.toggle('indicator')
-		$txtBattle.innerHTML += '<br  />Fin de la batalla !!'
-		setImgAttributes($imgPoke2, {
-			src: `${pokemonSelected2.imgFront}`,
-			width: 250,
-			height: 250,
-		})
-		setTimeout(() => {
-			alert(`El ganador del combate fue ${pokemonSelected2.name} del maestro Pokemon ${namePlayer2}`)
-		},500)
-		setTimeout(() => {
-			$txtBattle.innerHTML += '<br />'+pokemonSelected1.name+': No me quiero ir Sr. '+namePlayer1+'...'
-			$imgPoke1.classList.add('pokeByeBye')
-		}, 600)
+		ganador($imgPoke2, pokemonSelected2, namePlayer2)
+		setTimeout(() => perdedor($imgPoke1, pokemonSelected1, namePlayer1), 1100)
 	} else if (pokemonSelected2.vida < 1) {
 		turnButtonsOf()
 		$pLife2.innerHTML = 0
 		$p1.classList.toggle('indicator')
-		$txtBattle.innerHTML += '<br  />Fin de la batalla !!'
-		setImgAttributes($imgPoke1, {
-			src: `${pokemonSelected1.imgFront}`,
-			width: 250,
-			height: 250,
-		})
-		setTimeout(() => {
-			alert(`El ganador del combate fue ${pokemonSelected1.name} del maestro Pokemon ${namePlayer1}`)
-		}, 500)
-		setTimeout(() => {
-			$txtBattle.innerHTML += '<br />'+pokemonSelected2.name+': No me quiero ir Sr. '+namePlayer2+'...'
-			$imgPoke2.classList.add('pokeByeBye')
-		}, 600)
+		ganador($imgPoke1, pokemonSelected1, namePlayer1)
+		setTimeout(() => perdedor($imgPoke2, pokemonSelected2, namePlayer2), 1100)
 	}else{
 		changeImgPosition()
 		setTimeout(() => $txtBattle.innerHTML += `<br />La battalla continua...`, 1000)

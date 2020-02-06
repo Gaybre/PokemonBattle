@@ -144,6 +144,10 @@ hr {
 	overflow-y: scroll;
 	margin: auto;
 }
+.loadingList {
+	width: 230px;
+	height: 180px;
+}
 #imgPokebola {
 	width: 100px;
 	margin: auto;
@@ -318,7 +322,7 @@ footer div p a {
 	display: block;
 }
 .pokeByeBye {
-	animation: 4000ms fadeOut;
+	animation: 6000ms fadeOut;
 	animation-fill-mode: forwards
 }
 @keyframes fadeOut {
