@@ -9,8 +9,20 @@ class Pokemon {
 		this.imgFront = imgFront
 		this.imgBack  = imgBack
 	}
-	atacar(obj, attack) {
-		$txtBattle.innerHTML = `<strong>${obj.name}</strong> usó ${attack.target.value}`
+	atacar(obj1, obj2, attack) {
+		var random = Math.ceil(Math.random()*10)
+		console.log(random)
+		if (random < 9) {
+			if(random < 6){
+				if(random < 2){
+					$txtBattle.innerHTML = `<strong>${obj1.name}</strong> atacó con ${attack.target.value} pero pokemon2 usó defensa especial`
+				}
+				$txtBattle.innerHTML = `<strong>${obj1.name}</strong> usó ${attack.target.value}`
+			}
+			$txtBattle.innerHTML = `<strong>${obj1.name}</strong> ha atacado con ${attack.target.value}`	
+		}else{
+			$txtBattle.innerHTML = `<strong>${obj2.name}</strong> evadio el ataque ${attack.target.value} de <strong>${obj1.name}</strong>`
+		}
 	}
 }
 
@@ -23,7 +35,6 @@ var listaPD = []
 var pokemonSelected
 var pokemonSelected1
 var pokemonSelected2
-var availableList = false
 
 for(let i=0; i<ids.length; i++){
 	let j = i+1
@@ -55,4 +66,26 @@ async function ShowPokemonAvailable() {
 			alert(error)
 		}
 	}
+}
+async function getAtaqueEs(url) {
+	const ataquePokemonUrl  = await fetch(url)
+	const ataquePokemonJSON = await ataquePokemonUrl.json()
+	//const ataquePokemon 	= await ataquePokemonJSON.names[4].name
+	console.log(ataquePokemonJSON)
+	return ataquePokemonJSON
+}
+
+var movesPokemon = []
+var ataquePokemon
+var ataqueEsp
+
+function getMovesPokemon($pokemon){
+	movesPokemon = new Array(0)
+	$pokemon.moves.slice(0, 3).map(async function(z){
+		console.log('imprimir z', z)
+		ataquePokemon = await getAtaqueEs(z.move.url)
+		ataqueEsp     = await ataquePokemon.names[4].name
+		movesPokemon.push({name: ataqueEsp})
+	})
+	console.log('movesPokemon', movesPokemon)
 }

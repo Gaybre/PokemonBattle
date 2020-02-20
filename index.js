@@ -113,36 +113,42 @@ function loadPokemonInfo() {
 	$pLife2.innerHTML = pokemonSelected2.vida
 }
 function makePokemon(n) {
-	var i  = n-1
-	var pk = listaPD[i]
-	const movesPokemon = pk.moves.slice(0, 3).map(z => ({name: z.move.name}))
+	var pk = listaPD[n-1]
+	/*const movesPokemon = pk.moves.slice(0, 3).map(z => ({name: z.move.name}))*/
+	getMovesPokemon(pk)
 	pokemonSelected = new Pokemon(pk.id, pk.name, pk.types[0].type.name, movesPokemon, pk.base_experience, 100, pk.sprites.front_default, pk.sprites.back_default)
 
-	if (turno == 1) {
-		pokemonSelected1 = pokemonSelected
-		turno++
-		$txtPokemonID.value = ''
-		$p1.classList.toggle('indicator')
-		$p2.classList.toggle('indicator')
-		alert(`${namePlayer1}, Elejiste a ${pokemonSelected1.name}`)
-	}else{
-		pokemonSelected2 = pokemonSelected
-		turno--
-		$p2.classList.toggle('indicator')
-		alert(`${namePlayer2}, Elejiste a ${pokemonSelected2.name}`)
-		$chosePokemon.classList.toggle('containerChoosePokemon')
-		$timer.classList.toggle('hide')
-		loadPokemonInfo()
-		imgTurnPokemon1()
-		turnButtonsA()
-		loadAttacks(pokemonSelected1, pokemonSelected2)
-		setTimeout(() => {
-			$timer.classList.toggle('hide')
-			$infoBattle.classList.toggle('pokemonInfoBattle')
+	switch(turno) {
+		case 1:
+			pokemonSelected1 = pokemonSelected
+			console.log('pokemonSelected1', pokemonSelected1)
+			//movesPokemon.length = 0
+			turno++
+			$txtPokemonID.value = ''
 			$p1.classList.toggle('indicator')
-			$battleButtons1.classList.toggle('turnButtons')
-			$imgPoke1.classList.toggle('imgEnd')
-		}, 2000)
+			$p2.classList.toggle('indicator')
+			alert(`${namePlayer1}, Elejiste a ${pokemonSelected1.name}`)
+		break
+		case 2:
+			pokemonSelected2 = pokemonSelected
+			console.log('pokemonSelected2', pokemonSelected2)
+			turno--
+			$p2.classList.toggle('indicator')
+			alert(`${namePlayer2}, Elejiste a ${pokemonSelected2.name}`)
+			$chosePokemon.classList.toggle('containerChoosePokemon')
+			$timer.classList.toggle('hide')
+			loadPokemonInfo()
+			imgTurnPokemon1()
+			turnButtonsA()
+			setTimeout(() => {
+				loadAttacks(pokemonSelected1, pokemonSelected2)
+				$timer.classList.toggle('hide')
+				$infoBattle.classList.toggle('pokemonInfoBattle')
+				$p1.classList.toggle('indicator')
+				$battleButtons1.classList.toggle('turnButtons')
+				$imgPoke1.classList.toggle('imgEnd')
+			}, 2000)
+		break
 	}
 }
 function selecPokemon() {
@@ -206,6 +212,8 @@ function imgTurnPokemon2() {
 	})
 }
 function loadAttacks(ps1, ps2) {
+	console.log('ps1', ps1)
+	console.log('ps2', ps2)
 	let a = ps1.attacks
 	let b = ps2.attacks
 	setImgAttributes($ataque1a, {value: `${a[0].name}`})
@@ -296,7 +304,7 @@ function pokeAtack(attack) {
 			}else{
 				powerAtack = 15
 			}
-			pokemonSelected1.atacar(pokemonSelected1, attack)
+			pokemonSelected1.atacar(pokemonSelected1, pokemonSelected2, attack)
 			pokemonSelected2.vida -= powerAtack
 			$pLife2.innerHTML = pokemonSelected2.vida
 		}else{
@@ -310,7 +318,7 @@ function pokeAtack(attack) {
 				powerAtack = 15
 			}
 
-			pokemonSelected2.atacar(pokemonSelected2, attack)
+			pokemonSelected2.atacar(pokemonSelected2, pokemonSelected1, attack)
 			pokemonSelected1.vida -= powerAtack
 			$pLife1.innerHTML = pokemonSelected1.vida
 		}
