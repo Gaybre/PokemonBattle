@@ -11,6 +11,7 @@ const $txtPlayer 		= document.getElementById('txtPlayerName')
 const $formName			= document.getElementById('formName')
 const $playerName1 		= document.getElementById('namePlayer1')
 const $playerName2 		= document.getElementById('namePlayer2')
+const $pokeGif   		= document.getElementById('gifpokemon')
 const $chosePokemon 	= document.getElementById('container-choose-pokemon')
 const $txtPokemonID		= document.getElementById('txtPokemonSelected')
 const $btnPokemon		= document.getElementById('btnPokemonName')
@@ -60,6 +61,7 @@ function showInstructions() {
 	}, 2000)
 }
 function empezar(){
+	loadPokemonAvailable()
 	$instructions.classList.toggle('start')
 	$turno.classList.toggle('turno')
 	$chosePlayerName.classList.toggle('choosePlayerName')
@@ -90,9 +92,12 @@ function playerName() {
 					$p2.classList.toggle('indicator')
 					$chosePlayerName.classList.toggle('choosePlayerName')
 					$chosePokemon.classList.toggle('containerChoosePokemon')
-					ShowPokemonAvailable()
 				}, 400)
-				setTimeout(() => $p1.classList.toggle('indicator'), 500)
+				setTimeout(() => {
+					$pokeGif.classList.toggle('hide')
+					$listaPD.classList.toggle('hide')
+					$p1.classList.toggle('indicator')
+				}, 5000)
 			}
 		break
 	}
@@ -112,17 +117,17 @@ function loadPokemonInfo() {
 	$pLeve2.innerHTML = pokemonSelected2.level
 	$pLife2.innerHTML = pokemonSelected2.vida
 }
-function makePokemon(n) {
-	var pk = listaPD[n-1]
-	/*const movesPokemon = pk.moves.slice(0, 3).map(z => ({name: z.move.name}))*/
-	getMovesPokemon(pk)
-	pokemonSelected = new Pokemon(pk.id, pk.name, pk.types[0].type.name, movesPokemon, pk.base_experience, 100, pk.sprites.front_default, pk.sprites.back_default)
+async function makePokemon(n) {
+	const poke = listaPD[n-1]
+
+	await getTypeEsp(poke) //obtiene typeEsp
+	await getMovesPokemon(poke) //obtiene movesPokemon
+	pokemonSelected = new Pokemon(poke.id, poke.name, typeEsp, movesPokemon, poke.base_experience, 100, poke.sprites.front_default, poke.sprites.back_default)
 
 	switch(turno) {
 		case 1:
 			pokemonSelected1 = pokemonSelected
 			console.log('pokemonSelected1', pokemonSelected1)
-			//movesPokemon.length = 0
 			turno++
 			$txtPokemonID.value = ''
 			$p1.classList.toggle('indicator')

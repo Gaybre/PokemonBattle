@@ -26,32 +26,29 @@ class Pokemon {
 	}
 }
 
-const $listaPD   = document.getElementById('pokemonList')
-const $pokeGif   = document.getElementById('gifpokemon')
-const $txtBattle = document.getElementById('battle-text')
 const TOTAL_POKEMON_DISPONIBLES = 150
+const $listaPD   = document.getElementById('pokemonList')
+const $txtBattle = document.getElementById('battle-text')
 var ids = new Array(TOTAL_POKEMON_DISPONIBLES)
 var listaPD = []
+var movesPokemon = []
+var typeEsp
 var pokemonSelected
 var pokemonSelected1
 var pokemonSelected2
 
 for(let i=0; i<ids.length; i++){
-	let j = i+1
+	let j  = i+1
 	ids[i] = j
 }
 
-async function ShowPokemonAvailable() {
+async function loadPokemonAvailable() {
 	const URL_API_POKEMON = 'https://pokeapi.co/api/v2/pokemon/id'
+	
 	async function getPokemon(id) {
 		const pokemon = await fetch(URL_API_POKEMON.replace('id', id))
 		const poke 	  = await pokemon.json()
-		if (id == (TOTAL_POKEMON_DISPONIBLES - 1)) {
-			setTimeout(() => {
-				$pokeGif.classList.toggle('hide')
-				$listaPD.classList.toggle('hide')
-			}, 2000)
-		}
+
 		if (poke.id != null) {
 			$listaPD.innerHTML += poke.id+'. '+poke.name+'<br />'
 			listaPD.push(poke)
@@ -59,6 +56,7 @@ async function ShowPokemonAvailable() {
 		}
 		throw new Error(`No se pudo obtener el Pokemon ${id}`)
 	}
+
 	for(id in ids) {
 		try {
 			await getPokemon(ids[id])
@@ -67,25 +65,28 @@ async function ShowPokemonAvailable() {
 		}
 	}
 }
+
 async function getAtaqueEs(url) {
 	const ataquePokemonUrl  = await fetch(url)
 	const ataquePokemonJSON = await ataquePokemonUrl.json()
-	//const ataquePokemon 	= await ataquePokemonJSON.names[4].name
-	console.log(ataquePokemonJSON)
 	return ataquePokemonJSON
 }
 
-var movesPokemon = []
-var ataquePokemon
-var ataqueEsp
-
-function getMovesPokemon($pokemon){
+function getMovesPokemon($pokemon) {
 	movesPokemon = new Array(0)
+
 	$pokemon.moves.slice(0, 3).map(async function(z){
-		console.log('imprimir z', z)
-		ataquePokemon = await getAtaqueEs(z.move.url)
-		ataqueEsp     = await ataquePokemon.names[4].name
+		const ataquePokemon = await getAtaqueEs(z.move.url)
+		const ataqueEsp     = await ataquePokemon.names[4].name
 		movesPokemon.push({name: ataqueEsp})
 	})
-	console.log('movesPokemon', movesPokemon)
+	console.log(movesPokemon)
+}
+
+async function getTypeEsp($pokemon) {
+	const url = $pokemon.types[0].type.url
+
+	const typesUrl   = await fetch(url)
+	const typesJSON  = await typesUrl.json()
+	typeEsp 		 = typesJSON.names[4].name
 }
