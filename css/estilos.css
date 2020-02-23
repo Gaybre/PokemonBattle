@@ -199,6 +199,14 @@ hr {
 	flex-direction: column;
 	align-items: center;
 }
+#playAgain {
+	width: 80%;
+	height: 50px;
+	font-size: 20px;
+	font-weight: bold;
+	align-self: center;
+
+}
 .battle {
 	margin-top: 15px;
 	display: flex;
@@ -328,10 +336,11 @@ footer div p a {
 	display: block;
 }
 .pokemonInfoBattle {
-	display: block;
+	display: flex;
+	flex-direction: column;
 }
 .pokeByeBye {
-	animation: 6000ms fadeOut;
+	animation: 8000ms fadeOut;
 	animation-fill-mode: forwards
 }
 @keyframes fadeOut {

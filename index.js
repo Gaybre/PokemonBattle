@@ -37,6 +37,7 @@ const $ataque3a			= document.getElementById('ataque3a')
 const $ataque1b 		= document.getElementById('ataque1b')
 const $ataque2b			= document.getElementById('ataque2b')
 const $ataque3b			= document.getElementById('ataque3b')
+const $playAgain		= document.getElementById('playAgain')
 
 var namePlayer1, namePlayer2
 var turno = 1
@@ -45,6 +46,7 @@ var ganador
 $start.addEventListener('click', empezar)
 $btnPlayer.addEventListener('click', playerName)
 $btnPokemon.addEventListener('click', selecPokemon)
+$playAgain.addEventListener('click', playAgain)
 $formName.addEventListener('submit', (ev) => {
 	ev.preventDefault()
 	playerName()
@@ -66,6 +68,23 @@ function empezar(){
 	$turno.classList.toggle('turno')
 	$chosePlayerName.classList.toggle('choosePlayerName')
 	setTimeout(() => $p1.classList.toggle('indicator'), 500)
+}
+function playAgain() {	
+	turno = 1
+	$txtBattle.innerHTML = 'Comienza la batalla, mira el indicador sobre el nombre del player para saber de quien es el turno'
+	$imgPoke1.classList.remove('pokeByeBye')
+	$imgPoke2.classList.remove('pokeByeBye')
+	$imgPoke1.classList.remove('imgEnd')
+	$imgPoke2.classList.remove('imgEnd')
+	$battleButtons1.classList.remove('turnButtons')
+	$battleButtons2.classList.remove('turnButtons')
+	imgTurnPokemon1()
+	$chosePokemon.classList.toggle('containerChoosePokemon')
+	$infoBattle.classList.toggle('pokemonInfoBattle')
+	$playAgain.classList.toggle('hide')
+	$txtPokemonID.value = ''
+	$p2.classList.remove('indicator')
+	setTimeout(() => $p1.classList.add('indicator'), 2000)
 }
 function playerName() {
 	switch(turno) {
@@ -127,7 +146,7 @@ async function makePokemon(n) {
 	switch(turno) {
 		case 1:
 			pokemonSelected1 = pokemonSelected
-			console.log('pokemonSelected1', pokemonSelected1)
+			//console.log('pokemonSelected1', pokemonSelected1)
 			turno++
 			$txtPokemonID.value = ''
 			$p1.classList.toggle('indicator')
@@ -136,7 +155,7 @@ async function makePokemon(n) {
 		break
 		case 2:
 			pokemonSelected2 = pokemonSelected
-			console.log('pokemonSelected2', pokemonSelected2)
+			//console.log('pokemonSelected2', pokemonSelected2)
 			turno--
 			$p2.classList.toggle('indicator')
 			alert(`${namePlayer2}, Elejiste a ${pokemonSelected2.name}`)
@@ -241,6 +260,7 @@ function ganador($img, ganador, user) {
 function perdedor($img, {name}, user) {
 	$txtBattle.innerHTML = `Fin de la batalla !!<br /><strong>${name}:</strong> No me quiero ir Sr. ${user}....`
 	$img.classList.add('pokeByeBye')
+	setTimeout(() => $playAgain.classList.toggle('hide'), 4000)
 }
 function validarGanador() {
 	if (pokemonSelected1.vida < 1) {
