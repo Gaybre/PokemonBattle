@@ -41,7 +41,7 @@ const $playAgain		= document.getElementById('playAgain')
 
 var namePlayer1, namePlayer2
 var turno = 1
-var ganador
+var combate = 1
 
 $start.addEventListener('click', empezar)
 $btnPlayer.addEventListener('click', playerName)
@@ -71,6 +71,7 @@ function empezar(){
 }
 function playAgain() {	
 	turno = 1
+	combate ++
 	$txtBattle.innerHTML = 'Comienza la batalla, mira el indicador sobre el nombre del player para saber de quien es el turno'
 	$imgPoke1.classList.remove('pokeByeBye')
 	$imgPoke2.classList.remove('pokeByeBye')
@@ -78,6 +79,9 @@ function playAgain() {
 	$imgPoke2.classList.remove('imgEnd')
 	$battleButtons1.classList.remove('turnButtons')
 	$battleButtons2.classList.remove('turnButtons')
+	$imgPoke1.classList.remove('rotar')
+	$imgPoke2.classList.remove('rotar')
+	$battleMap.classList.remove('map2')
 	imgTurnPokemon1()
 	$chosePokemon.classList.toggle('containerChoosePokemon')
 	$infoBattle.classList.toggle('pokemonInfoBattle')
@@ -90,7 +94,8 @@ function playerName() {
 	switch(turno) {
 		case 1:
 			if ($txtPlayer.value == '') {
-				alert(`Player ${turno}, debes ingresar un nombre de usuario`)
+				//alert(`Player ${turno}, debes ingresar un nombre de usuario`)
+				swal('Elije tu nombre de maestro Pokemon', `Player ${turno}, debes ingresar un nombre de usuario`, 'warning')
 			}else{
 				namePlayer1 = $txtPlayer.value
 				$playerName1.innerHTML = namePlayer1
@@ -102,7 +107,9 @@ function playerName() {
 		break
 		case 2:
 			if ($txtPlayer.value == '') {
-				alert(`Player ${turno}, debes ingresar un nombre de usuario`)
+				//alert(`Player ${turno}, debes ingresar un nombre de usuario`)
+				swal('Elije tu nombre de maestro Pokemon', `Player ${turno}, debes ingresar un nombre de usuario`, 'warning')
+
 			}else{
 				namePlayer2 = $txtPlayer.value
 				$playerName2.innerHTML = namePlayer2
@@ -151,14 +158,14 @@ async function makePokemon(n) {
 			$txtPokemonID.value = ''
 			$p1.classList.toggle('indicator')
 			$p2.classList.toggle('indicator')
-			alert(`${namePlayer1}, Elejiste a ${pokemonSelected1.name}`)
+			await swal('Tu equipo:', `${namePlayer1}, Elejiste a ${pokemonSelected1.name}`, 'success')
 		break
 		case 2:
 			pokemonSelected2 = pokemonSelected
 			//console.log('pokemonSelected2', pokemonSelected2)
 			turno--
 			$p2.classList.toggle('indicator')
-			alert(`${namePlayer2}, Elejiste a ${pokemonSelected2.name}`)
+			await swal('Tu equipo:', `${namePlayer2}, Elejiste a ${pokemonSelected2.name}`, 'success')
 			$chosePokemon.classList.toggle('containerChoosePokemon')
 			$timer.classList.toggle('hide')
 			loadPokemonInfo()
@@ -179,14 +186,16 @@ function selecPokemon() {
 	switch(turno) {
 		case 1:
 			if ($txtPokemonID.value == '') {
-				alert(`Player ${namePlayer1}, no has ingresado ningún ID`)
+				swal('Elije a tu compañero de lucha', `Player ${namePlayer1}, no has ingresado ningún ID`, 'warning')
+
 			}else{
 				makePokemon($txtPokemonID.value)
 			}
 			break
 		case 2:
 			if ($txtPokemonID.value == '') {
-				alert(`Player ${namePlayer2}, no has ingresado ningún ID`)
+				swal('Elije a tu compañero de lucha', `Player ${namePlayer2}, no has ingresado ningún ID`, 'warning')
+
 			}else{
 				makePokemon($txtPokemonID.value)
 			}
@@ -248,32 +257,32 @@ function loadAttacks(ps1, ps2) {
 	setImgAttributes($ataque2b, {value: `${b[1].name}`})
 	setImgAttributes($ataque3b, {value: `${b[2].name}`})
 }
-function ganador($img, ganador, user) {
+async function ganador($img, ganador, user) {
 	setImgAttributes($img, {
 	src: `${ganador.imgFront}`,
 	width: 250,
 	height: 250,
 	})
 	$txtBattle.innerHTML += ' ha sido un golpe letal<br/>Fin de la batalla !!'
-	setTimeout(() => alert(`El ganador del combate fue ${ganador.name} del maestro Pokemon ${user}`), 1000)
+	await swal(`Combate ${combate}`, `El ganador del combate fue ${ganador.name} del maestro Pokemon ${user}`, 'success')
 }
 function perdedor($img, {name}, user) {
 	$txtBattle.innerHTML = `Fin de la batalla !!<br /><strong>${name}:</strong> No me quiero ir Sr. ${user}....`
 	$img.classList.add('pokeByeBye')
 	setTimeout(() => $playAgain.classList.toggle('hide'), 4000)
 }
-function validarGanador() {
+async function validarGanador() {
 	if (pokemonSelected1.vida < 1) {
 		turnButtonsOf()
 		$pLife1.innerHTML = 0
 		$p2.classList.toggle('indicator')
-		ganador($imgPoke2, pokemonSelected2, namePlayer2)
+		await ganador($imgPoke2, pokemonSelected2, namePlayer2)
 		setTimeout(() => perdedor($imgPoke1, pokemonSelected1, namePlayer1), 1100)
 	} else if (pokemonSelected2.vida < 1) {
 		turnButtonsOf()
 		$pLife2.innerHTML = 0
 		$p1.classList.toggle('indicator')
-		ganador($imgPoke1, pokemonSelected1, namePlayer1)
+	    await ganador($imgPoke1, pokemonSelected1, namePlayer1)
 		setTimeout(() => perdedor($imgPoke2, pokemonSelected2, namePlayer2), 1100)
 	}else{
 		changeImgPosition()
