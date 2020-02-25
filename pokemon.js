@@ -80,7 +80,7 @@ function getMovesPokemon($pokemon) {
 		const ataqueEsp     = await ataquePokemon.names[4].name
 		movesPokemon.push({name: ataqueEsp})
 	})
-	console.log(movesPokemon)
+	//console.log(movesPokemon)
 }
 
 async function getTypeEsp($pokemon) {
@@ -89,4 +89,5 @@ async function getTypeEsp($pokemon) {
 	const typesUrl   = await fetch(url)
 	const typesJSON  = await typesUrl.json()
 	typeEsp 		 = typesJSON.names[4].name
+	//console.log(typeEsp)
 }
