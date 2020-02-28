@@ -101,6 +101,7 @@ h3 {
 	margin: 10px 0;
 	padding: 5px;
 	border-radius: 5px;
+	outline: none;
 }
 .btn {
 	padding: 5px;
@@ -142,6 +143,14 @@ h3 {
 }
 .listaPokemonB__imgPokebola {
 	width: 100px;
+	margin: auto;
+}
+.containerDito {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	width: 70%;
 	margin: auto;
 }
 

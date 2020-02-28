@@ -41,12 +41,12 @@ const $ataque3b			= document.getElementById('ataque3b')
 const $playAgain		= document.getElementById('playAgain')
 
 var namePlayer1, namePlayer2
-var turno = 1
+var turno   = 1
 var combate = 1
 
 $start.addEventListener('click', empezar)
 $btnPlayer.addEventListener('click', playerName)
-$btnPokemon.addEventListener('click', selecPokemon)
+$btnPokemon.addEventListener('click',selectPokemon)
 $playAgain.addEventListener('click', playAgain)
 $formName.addEventListener('submit', (ev) => {
 	ev.preventDefault()
@@ -54,7 +54,7 @@ $formName.addEventListener('submit', (ev) => {
 })
 $formID.addEventListener('submit', (ev) => {
 	ev.preventDefault()
-	selecPokemon()
+	selectPokemon()
 })
 
 function showInstructions() {
@@ -142,7 +142,7 @@ function loadPokemonInfo() {
 	$pLeve2.innerHTML = pokemonSelected2.level
 	$pLife2.innerHTML = pokemonSelected2.vida
 }
-async function makePokemon(n) {
+async function makePokemon(n, $dito) {
 	const poke = listaPD[n-1]
 
 	await getTypeEsp(poke) //obtiene typeEsp
@@ -181,23 +181,52 @@ async function makePokemon(n) {
 		break
 	}
 }
-function selecPokemon() {
+function selectPokemon() {
+	var turnoNamePlayer // se le asignará el nombre del player en turno
+
 	switch(turno) {
 		case 1:
-			if ($txtPokemonID.value == '') {
-				swal('Elije a tu compañero de lucha', `Player ${namePlayer1}, no has ingresado ningún ID`, 'warning')
-			}else{
-				makePokemon($txtPokemonID.value)
-			}
+			turnoNamePlayer = namePlayer1
 			break
 		case 2:
-			if ($txtPokemonID.value == '') {
-				swal('Elije a tu compañero de lucha', `Player ${namePlayer2}, no has ingresado ningún ID`, 'warning')
-			}else{
-				makePokemon($txtPokemonID.value)
-			}
+			turnoNamePlayer = namePlayer2
 			break
 	}
+
+	if ($txtPokemonID.value == '') {
+		swal('Elije a tu compañero de lucha', `Player ${turnoNamePlayer}, no has ingresado ningún ID`, 'warning')
+		$txtPokemonID.value = ''
+	}
+	else if (($txtPokemonID.value > TOTAL_POKEMON_DISPONIBLES) || ($txtPokemonID.value < 1)) {
+		swal('Elije a tu compañero de lucha', `Player ${turnoNamePlayer}, El ID no corresponde a ningun Pokemon disponible`, 'warning')
+		$txtPokemonID.value = ''
+	}
+	else if ($txtPokemonID.value == 132) {
+		chooseDito()
+		$txtPokemonID.value = ''
+	}
+	else{
+		makePokemon($txtPokemonID.value)
+	}
+}
+function chooseDito() {
+	const $divDito 	= document.getElementById('container__dito')
+	const $imgDito 	= document.getElementById('imgDito')
+	const $btnDito 	= document.getElementById('btnDito')
+	const urlDito	= listaPD[131].sprites.front_default
+
+	setImgAttributes($imgDito, {
+		src:`${urlDito}`,
+		width: 200,
+	})
+	$btnDito.addEventListener('click', () => {
+		$divDito.classList.remove('containerDito')			
+		$divDito.classList.add('hide')
+		$chosePokemon.classList.add('containerChoosePokemon')
+	})
+	$chosePokemon.classList.remove('containerChoosePokemon')
+	$divDito.classList.remove('hide')
+	$divDito.classList.add('containerDito')
 }
 function changeImgPosition() {
 	switch(turno) {
