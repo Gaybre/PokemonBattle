@@ -62,9 +62,11 @@ function showInstructions() {
 	setTimeout(()=> {
 		$imgCharging.classList.toggle('hide')
 		$instructions.classList.toggle('start')
+		$irGH.classList.add('pulse')
 	}, 2000)
 }
 function empezar(){
+	$irGH.classList.remove('pulse')
 	loadPokemonAvailable()
 	$instructions.classList.toggle('start')
 	$turno.classList.toggle('turno')
@@ -74,7 +76,6 @@ function empezar(){
 function playAgain() {
 	turno = 1
 	combate ++
-	$irGH.classList.remove('pulse')
 	$txtBattle.innerHTML = 'Comienza la batalla, mira el indicador sobre el nombre del player para saber de quien es el turno'
 	$imgPoke1.classList.remove('pokeByeBye')
 	$imgPoke2.classList.remove('pokeByeBye')
@@ -298,7 +299,6 @@ function perdedor($img, {name}, user) {
 	setTimeout(() => {
 		 $txtBattle.innerHTML = `Fin de la batalla !!`
 		$playAgain.classList.toggle('hide')
-		$irGH.classList.add('pulse')
 	}, 4000)
 }
 async function validarGanador() {
