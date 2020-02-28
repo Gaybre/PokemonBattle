@@ -39,6 +39,7 @@ const $ataque1b 		= document.getElementById('ataque1b')
 const $ataque2b			= document.getElementById('ataque2b')
 const $ataque3b			= document.getElementById('ataque3b')
 const $playAgain		= document.getElementById('playAgain')
+const $irGH					= document.getElementById('irGH')
 
 var namePlayer1, namePlayer2
 var turno   = 1
@@ -70,9 +71,10 @@ function empezar(){
 	$chosePlayerName.classList.toggle('choosePlayerName')
 	setTimeout(() => $p1.classList.toggle('indicator'), 500)
 }
-function playAgain() {	
+function playAgain() {
 	turno = 1
 	combate ++
+	$irGH.classList.remove('pulse')
 	$txtBattle.innerHTML = 'Comienza la batalla, mira el indicador sobre el nombre del player para saber de quien es el turno'
 	$imgPoke1.classList.remove('pokeByeBye')
 	$imgPoke2.classList.remove('pokeByeBye')
@@ -220,7 +222,7 @@ function chooseDito() {
 		width: 200,
 	})
 	$btnDito.addEventListener('click', () => {
-		$divDito.classList.remove('containerDito')			
+		$divDito.classList.remove('containerDito')
 		$divDito.classList.add('hide')
 		$chosePokemon.classList.add('containerChoosePokemon')
 	})
@@ -296,6 +298,7 @@ function perdedor($img, {name}, user) {
 	setTimeout(() => {
 		 $txtBattle.innerHTML = `Fin de la batalla !!`
 		$playAgain.classList.toggle('hide')
+		$irGH.classList.add('pulse')
 	}, 4000)
 }
 async function validarGanador() {
@@ -406,7 +409,7 @@ function turnButtonsB() {
 function turnButtonsOf() {
 	$ataque1b.removeEventListener('click', pokeAtack)
 	$ataque2b.removeEventListener('click', pokeAtack)
-	$ataque3b.removeEventListener('click', pokeAtack)	
+	$ataque3b.removeEventListener('click', pokeAtack)
 
 	$ataque1a.removeEventListener('click', pokeAtack)
 	$ataque2a.removeEventListener('click', pokeAtack)
