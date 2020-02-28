@@ -325,6 +325,10 @@ async function validarGanador() {
 }
 function pokeAtack(attack) {
 	var powerAtack
+	var $atacante
+	var $atacado
+	var $marcador
+	var $imgDefense
 		/*
 		pokemonSelected1.attacks[0].name
 		pokemonSelected1.attacks[1].name
@@ -355,35 +359,42 @@ function pokeAtack(attack) {
 				D = 15
 			}
 			*/
-		if (turno === 1) {
-			if (pokemonSelected1.level > pokemonSelected2.level) {
-				if ((pokemonSelected1.level/2)>pokemonSelected2.level) {
-					powerAtack = 50
-				}else{
-					powerAtack = 30
-				}
-			}else{
-				powerAtack = 15
-			}
-			pokemonSelected1.atacar(pokemonSelected1, pokemonSelected2, attack)
-			pokemonSelected2.vida -= powerAtack
-			$pLife2.innerHTML = pokemonSelected2.vida
-		}else{
-			if (pokemonSelected2.level > pokemonSelected1.level) {
-				if ((pokemonSelected2.level/2)>pokemonSelected1.level) {
-					powerAtack = 50
-				}else{
-					powerAtack = 30
-				}
-			}else{
-				powerAtack = 15
-			}
+	switch(turno) {
+		case 1:
+			$atacante = pokemonSelected1
+			$atacado  = pokemonSelected2
+			$marcador = $pLife2
+			$imgDefense = $imgPoke2
+			break
+		case 2:
+			$atacante = pokemonSelected2
+			$atacado  = pokemonSelected1
+			$marcador = $pLife1
+			$imgDefense = $imgPoke1
+			break
+	}
+	if ($atacante.level > $atacado.level) {
+		powerAtack = 30
 
-			pokemonSelected2.atacar(pokemonSelected2, pokemonSelected1, attack)
-			pokemonSelected1.vida -= powerAtack
-			$pLife1.innerHTML = pokemonSelected1.vida
+		if (($atacante.level/2) > $atacado.level) {
+			powerAtack = 50
 		}
-		validarGanador()
+	}else{
+		powerAtack = 15
+	}
+
+	$atacante.atacar($atacante, $atacado, attack)
+	
+	if (useDefense) {
+		powerAtack = 0
+		$atacado.evadirAtaque($imgDefense)
+		useDefense = false
+	}
+
+	$atacado.vida -= powerAtack
+	$marcador.innerHTML = $atacado.vida
+	
+	validarGanador()
 }
 function turnButtonsA() {
 	$ataque1a.addEventListener('click', pokeAtack)
