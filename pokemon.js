@@ -11,35 +11,46 @@ class Pokemon {
 	}
 	atacar(obj1, obj2, attack) {
 		var random = Math.ceil(Math.random()*10)
-		console.log(random)
 
 		switch(random) {
 			case 1:
-				$txtBattle.innerHTML = `<strong>${obj1.name}</strong> atacó con ${attack.target.value} pero pokemon2 usó defensa especial`
-				break
 			case 2:
+				$txtBattle.innerHTML = `<strong>${obj1.name}</strong> atacó con ${attack.target.value} pero <strong>${obj2.name}</strong> usó defensa especial`
+				useDefense = true
+				break
+			case 5:
 			case 3:
 			case 4:
-			case 5:
 				$txtBattle.innerHTML = `<strong>${obj1.name}</strong> usó ${attack.target.value}`
+				pokeAtacado = true
 				break
 			case 6:
 			case 7:
 			case 8:
 			case 9:
 				$txtBattle.innerHTML = `<strong>${obj1.name}</strong> ha atacado con ${attack.target.value}`	
+				pokeAtacado = true
 				break
+
 			case 10:
 				$txtBattle.innerHTML = `<strong>${obj2.name}</strong> evadio el ataque ${attack.target.value} de <strong>${obj1.name}</strong>`
-				useDefense = true
+				evadAtaque = true
 				break
 		}
 	}
-	evadirAtaque($imgDefense) {
-		$imgDefense.classList.toggle('imgEnd')
-		setTimeout(() => $imgDefense.classList.toggle('imgEnd'), 100)
-		setTimeout(() => $imgDefense.classList.toggle('imgEnd'), 200)
-		setTimeout(() => $imgDefense.classList.toggle('imgEnd'), 300)
+	evadirAtaque($imgPokemon) {
+		$imgPokemon.classList.toggle('imgEnd')
+		setTimeout(() => $imgPokemon.classList.toggle('imgEnd'), 100)
+		setTimeout(() => $imgPokemon.classList.toggle('imgEnd'), 200)
+		setTimeout(() => $imgPokemon.classList.toggle('imgEnd'), 300)
+	}
+	defensaEspecial($imgPokemon) {
+		$imgPokemon.classList.toggle('useDefense')
+		setTimeout(() => $imgPokemon.classList.toggle('useDefense'), 1000)
+	}
+	atacado($imgPokemon) {
+		$imgPokemon.classList.toggle('pokeAtacado')
+		setTimeout(() => $imgPokemon.classList.toggle('pokeAtacado'), 1000)
 	}
 }
 
@@ -51,6 +62,8 @@ var listaPD = []
 var movesPokemon = []
 var typeEsp
 var useDefense = false
+var evadAtaque = false
+var pokeAtacado = false
 var pokemonSelected
 var pokemonSelected1
 var pokemonSelected2

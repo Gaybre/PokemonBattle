@@ -331,7 +331,8 @@ function pokeAtack(attack) {
 	var $atacante
 	var $atacado
 	var $marcador
-	var $imgDefense
+	var $imgPokeAtacado
+
 		/*
 		pokemonSelected1.attacks[0].name
 		pokemonSelected1.attacks[1].name
@@ -367,13 +368,13 @@ function pokeAtack(attack) {
 			$atacante = pokemonSelected1
 			$atacado  = pokemonSelected2
 			$marcador = $pLife2
-			$imgDefense = $imgPoke2
+			$imgPokeAtacado = $imgPoke2
 			break
 		case 2:
 			$atacante = pokemonSelected2
 			$atacado  = pokemonSelected1
 			$marcador = $pLife1
-			$imgDefense = $imgPoke1
+			$imgPokeAtacado = $imgPoke1
 			break
 	}
 	if ($atacante.level > $atacado.level) {
@@ -388,16 +389,25 @@ function pokeAtack(attack) {
 
 	$atacante.atacar($atacante, $atacado, attack)
 	
-	if (useDefense) {
+	if (evadAtaque) {
 		powerAtack = 0
-		$atacado.evadirAtaque($imgDefense)
+		$atacado.evadirAtaque($imgPokeAtacado)
+		evadAtaque = false
+	}
+	if (useDefense) {
+		powerAtack -= 10 
+		$atacado.defensaEspecial($imgPokeAtacado)
 		useDefense = false
+	}
+	if (pokeAtacado) {
+		$atacado.atacado($imgPokeAtacado)
+		pokeAtacado = false
 	}
 
 	$atacado.vida -= powerAtack
 	$marcador.innerHTML = $atacado.vida
 	
-	validarGanador()
+	setTimeout(() => validarGanador(), 1500)
 }
 function turnButtonsA() {
 	$ataque1a.addEventListener('click', pokeAtack)
