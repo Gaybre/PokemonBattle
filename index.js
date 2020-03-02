@@ -304,13 +304,11 @@ function perdedor($img, {name}, user) {
 async function validarGanador() {
 	if (pokemonSelected1.vida < 1) {
 		turnButtonsOf()
-		$pLife1.innerHTML = 0
 		$p2.classList.toggle('indicator')
 		await ganador($imgPoke2, pokemonSelected2, namePlayer2)
 		setTimeout(() => perdedor($imgPoke1, pokemonSelected1, namePlayer1), 1100)
 	} else if (pokemonSelected2.vida < 1) {
 		turnButtonsOf()
-		$pLife2.innerHTML = 0
 		$p1.classList.toggle('indicator')
 	    await ganador($imgPoke1, pokemonSelected1, namePlayer1)
 		setTimeout(() => perdedor($imgPoke2, pokemonSelected2, namePlayer2), 1100)
@@ -332,51 +330,25 @@ function pokeAtack(attack) {
 	var $atacado
 	var $marcador
 	var $imgPokeAtacado
+	var $imgPokeAtacante
 
-		/*
-		pokemonSelected1.attacks[0].name
-		pokemonSelected1.attacks[1].name
-		pokemonSelected1.attacks[2].name
-
-		pokemonSelected2.attacks[0].name
-		pokemonSelected2.attacks[1].name
-		pokemonSelected2.attacks[2].name
-
-			if (obj1.level > obj2.level) {
-				if ((obj1.level/2)>obj2.level) {
-					L = 2
-				}else{
-					L = 1.5
-				}
-			}else{
-				L = 1
-			}
-
-			if (obj1.type == water) {
-
-			}
-
-			var random = Math.random()
-			if (random > 4) {
-				D = 0
-			}else {
-				D = 15
-			}
-			*/
 	switch(turno) {
 		case 1:
 			$atacante = pokemonSelected1
 			$atacado  = pokemonSelected2
 			$marcador = $pLife2
-			$imgPokeAtacado = $imgPoke2
+			$imgPokeAtacante = $imgPoke1
+			$imgPokeAtacado  = $imgPoke2
 			break
 		case 2:
 			$atacante = pokemonSelected2
 			$atacado  = pokemonSelected1
 			$marcador = $pLife1
-			$imgPokeAtacado = $imgPoke1
+			$imgPokeAtacante = $imgPoke2
+			$imgPokeAtacado  = $imgPoke1
 			break
 	}
+
 	if ($atacante.level > $atacado.level) {
 		powerAtack = 30
 
@@ -386,9 +358,10 @@ function pokeAtack(attack) {
 	}else{
 		powerAtack = 15
 	}
-
+	$atacante.movimientoAtacar($imgPokeAtacante, $atacante)
 	$atacante.atacar($atacante, $atacado, attack)
 	
+	//despues de atacar(), se evaluará la variable booleana y se ejectutará la animación correspondiente pasando por parametro la imagen del pokemon atacado
 	if (evadAtaque) {
 		powerAtack = 0
 		$atacado.evadirAtaque($imgPokeAtacado)
@@ -405,9 +378,13 @@ function pokeAtack(attack) {
 	}
 
 	$atacado.vida -= powerAtack
+
+	if ($atacado.vida < 0) {
+		$atacado.vida = 0
+	}
 	$marcador.innerHTML = $atacado.vida
 	
-	setTimeout(() => validarGanador(), 1500)
+	setTimeout(() => validarGanador(), 1200)
 }
 function turnButtonsA() {
 	$ataque1a.addEventListener('click', pokeAtack)

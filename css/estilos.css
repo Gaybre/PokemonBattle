@@ -362,6 +362,48 @@ a:hover {
 	animation: 7000ms fadeOut;
 	animation-fill-mode: forwards
 }
+.lanzarAtaque {
+	border-radius: 150px;
+	animation-name: ataque;
+	animation-duration: .3s;
+	animation-iteration-count: infinite;
+}
+.lanzarAtaqueAgua {
+	border-radius: 150px;
+	animation-name: ataqueAgua;
+	animation-duration: .3s;
+	animation-iteration-count: infinite;	
+}
+.lanzarAtaqueVeneno {
+	border-radius: 150px;
+	animation-name: ataqueVeneno;
+	animation-duration: .3s;
+	animation-iteration-count: infinite;
+}
+.lanzarAtaqueFantasma {
+	border-radius: 150px;
+	animation-name: ataqueFantasma;
+	animation-duration: .3s;
+	animation-iteration-count: infinite;
+}
+.lanzarAtaqueTierra {
+	border-radius: 150px;
+	animation-name: ataqueTierra;
+	animation-duration: .3s;
+	animation-iteration-count: infinite;
+}
+.lanzarAtaqueVolador {
+	border-radius: 150px;
+	animation-name: ataqueVolador;
+	animation-duration: .3s;
+	animation-iteration-count: infinite;	
+}
+
+.evadAtaque {
+	animation-name: evadir;
+	animation-duration: .3s;
+	animation-iteration-count: infinite;
+}
 .useDefense {
 	animation-name: defense;
 	animation-duration: .3s;
@@ -383,8 +425,48 @@ a:hover {
 	50%  {transform: scale(1.5);}
 	100% {transform: scale(1);}
 }
+@keyframes ataque {
+	0%	 {box-shadow: inset -20px  20px 50px 1px gold;}
+	25%	 {box-shadow: inset  20px  20px 50px 1px gold;}
+	50%	 {box-shadow: inset  20px -20px 50px 1px gold;}
+	100% {box-shadow: inset -20px -20px 50px 1px gold;}
+}
+@keyframes ataqueAgua {
+	0%	 {box-shadow: inset -20px  20px 50px 1px #01A9DB;}
+	25%	 {box-shadow: inset  20px  20px 50px 1px #01A9DB;}
+	50%	 {box-shadow: inset  20px -20px 50px 1px #01A9DB;}
+	100% {box-shadow: inset -20px -20px 50px 1px #01A9DB;}
+}
+@keyframes ataqueVeneno {
+	0%	 {box-shadow: inset -20px  20px 50px 1px #38610B;}
+	25%	 {box-shadow: inset  20px  20px 50px 1px #38610B;}
+	50%	 {box-shadow: inset  20px -20px 50px 1px #38610B;}
+	100% {box-shadow: inset -20px -20px 50px 1px #38610B;}
+}
+@keyframes ataqueFantasma {
+	0%	 {box-shadow: inset -20px  20px 50px 1px #170B3B;}
+	25%	 {box-shadow: inset  20px  20px 50px 1px #170B3B;}
+	50%	 {box-shadow: inset  20px -20px 50px 1px #170B3B;}
+	100% {box-shadow: inset -20px -20px 50px 1px #170B3B;}
+}
+@keyframes ataqueTierra {
+	0%	 {box-shadow: inset -20px  20px 50px 1px #B45F04;}
+	25%	 {box-shadow: inset  20px  20px 50px 1px #B45F04;}
+	50%	 {box-shadow: inset  20px -20px 50px 1px #B45F04;}
+	100% {box-shadow: inset -20px -20px 50px 1px #B45F04;}
+}
+@keyframes ataqueVolador {
+	0%	 {box-shadow: inset -20px  20px 50px 1px #BDBDBD;}
+	25%	 {box-shadow: inset  20px  20px 50px 1px #BDBDBD;}
+	50%	 {box-shadow: inset  20px -20px 50px 1px #BDBDBD;}
+	100% {box-shadow: inset -20px -20px 50px 1px #BDBDBD;}
+}
+@keyframes evadir {
+	0%   {margin: 0px 20px;}
+	50%  {margin: 10px 10px;}
+	100% {margin: 0;}
+}
 @keyframes defense {
-	
 	0% {
 		border-left: 2px solid rgba(255, 255, 255,.9);
 		border-radius: 100px;
@@ -397,7 +479,6 @@ a:hover {
 		border-left: 2px solid rgba(255, 255, 255,.1);
 		border-radius: 100px;
 	}
-
 }
 @keyframes atacado {
 	0%    {opacity: 1;}

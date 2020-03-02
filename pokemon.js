@@ -1,56 +1,84 @@
 class Pokemon {
 	constructor(id, name, type, attacks, level, vida, imgFront, imgBack) {
-		this.id 	  	= id
+		this.id 	  = id
 		this.name 	  = name
 		this.type 	  = type
 		this.attacks  = attacks
 		this.level 	  = level
-		this.vida	 	  = vida
+		this.vida	  = vida
 		this.imgFront = imgFront
 		this.imgBack  = imgBack
 	}
-	atacar(obj1, obj2, attack) {
+	//de manera aleatoria el ataque lanzará un msj y ejecutará la animación de acuerdo al valor 'true' evaluado en pokeAtack()
+	atacar(atacante, atacado, attack) { 
 		var random = Math.ceil(Math.random()*10)
 
 		switch(random) {
 			case 1:
 			case 2:
-				$txtBattle.innerHTML = `<strong>${obj1.name}</strong> atacó con ${attack.target.value} pero <strong>${obj2.name}</strong> usó defensa especial`
+				$txtBattle.innerHTML = `<strong>${atacante.name}</strong> atacó con ${attack.target.value} pero <strong>${atacado.name}</strong> usó defensa especial`
 				useDefense = true
 				break
-			case 5:
 			case 3:
 			case 4:
-				$txtBattle.innerHTML = `<strong>${obj1.name}</strong> usó ${attack.target.value}`
+			case 5:
+			case 6:
+				$txtBattle.innerHTML = `<strong>${atacante.name}</strong> usó ${attack.target.value}`
 				pokeAtacado = true
 				break
-			case 6:
 			case 7:
 			case 8:
 			case 9:
-				$txtBattle.innerHTML = `<strong>${obj1.name}</strong> ha atacado con ${attack.target.value}`	
+				$txtBattle.innerHTML = `<strong>${atacante.name}</strong> ha atacado con ${attack.target.value}`	
 				pokeAtacado = true
 				break
-
 			case 10:
-				$txtBattle.innerHTML = `<strong>${obj2.name}</strong> evadio el ataque ${attack.target.value} de <strong>${obj1.name}</strong>`
+				$txtBattle.innerHTML = `<strong>${atacado.name}</strong> evadio el ataque ${attack.target.value} de <strong>${atacante.name}</strong>`
 				evadAtaque = true
 				break
 		}
 	}
-	evadirAtaque($imgPokemon) {
-		$imgPokemon.classList.toggle('imgEnd')
-		setTimeout(() => $imgPokemon.classList.toggle('imgEnd'), 100)
-		setTimeout(() => $imgPokemon.classList.toggle('imgEnd'), 200)
-		setTimeout(() => $imgPokemon.classList.toggle('imgEnd'), 300)
+	//animación para el pokemon que lanza el ataque
+	movimientoAtacar($imgPokemon, {type}) {
+		if (type == 'Agua') {
+			$imgPokemon.classList.add('lanzarAtaqueAgua')
+			setTimeout(() => $imgPokemon.classList.remove('lanzarAtaqueAgua'), 1000)	
+		}
+		else if (type == 'Veneno') {
+			$imgPokemon.classList.add('lanzarAtaqueVeneno')
+			setTimeout(() => $imgPokemon.classList.remove('lanzarAtaqueVeneno'), 1000)
+		}
+		else if (type == 'Fantasma') {
+			$imgPokemon.classList.add('lanzarAtaqueFantasma')
+			setTimeout(() => $imgPokemon.classList.remove('lanzarAtaqueFantasma'), 1000)
+		}
+		else if ((type == 'Tierra') || (type == 'Lucha') || (type == 'Fuego')) {
+			$imgPokemon.classList.add('lanzarAtaqueTierra')
+			setTimeout(() => $imgPokemon.classList.remove('lanzarAtaqueTierra'), 1000)
+		}
+		else if ((type == 'Volador') || (type == 'Psíquico')) {
+			$imgPokemon.classList.add('lanzarAtaqueVolador')
+			setTimeout(() => $imgPokemon.classList.remove('lanzarAtaqueVolador'), 1000)
+		}
+		else {
+			$imgPokemon.classList.add('lanzarAtaque')
+			setTimeout(() => $imgPokemon.classList.remove('lanzarAtaque'), 1000)
+		}
 	}
-	defensaEspecial($imgPokemon) {
-		$imgPokemon.classList.toggle('useDefense')
-		setTimeout(() => $imgPokemon.classList.toggle('useDefense'), 1000)
+	//animación para evadir ataque
+	evadirAtaque($imgPokemon) { 
+		$imgPokemon.classList.add('evadAtaque')
+		setTimeout(() => $imgPokemon.classList.remove('evadAtaque'), 1000)
 	}
-	atacado($imgPokemon) {
-		$imgPokemon.classList.toggle('pokeAtacado')
-		setTimeout(() => $imgPokemon.classList.toggle('pokeAtacado'), 1000)
+	//animación para usar defensa especial
+	defensaEspecial($imgPokemon) { 
+		$imgPokemon.classList.add('useDefense')
+		setTimeout(() => $imgPokemon.classList.remove('useDefense'), 1000)
+	}
+	//animación para el pokemon que recibe el ataque
+	atacado($imgPokemon) { 
+		$imgPokemon.classList.add('pokeAtacado')
+		setTimeout(() => $imgPokemon.classList.remove('pokeAtacado'), 1000)
 	}
 }
 
