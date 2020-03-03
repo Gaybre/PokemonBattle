@@ -16,10 +16,10 @@ class Pokemon {
 		switch(random) {
 			case 1:
 			case 2:
+			case 3:
 				$txtBattle.innerHTML = `<strong>${atacante.name}</strong> atacó con ${attack.target.value} pero <strong>${atacado.name}</strong> usó defensa especial`
 				useDefense = true
 				break
-			case 3:
 			case 4:
 			case 5:
 			case 6:
@@ -40,6 +40,7 @@ class Pokemon {
 	}
 	//animación para el pokemon que lanza el ataque
 	movimientoAtacar($imgPokemon, {type}) {
+		//esta función recibe 2 parametros, la segunda validará el tipo para usar un color especifico
 		if (type == 'Agua') {
 			$imgPokemon.classList.add('lanzarAtaqueAgua')
 			setTimeout(() => $imgPokemon.classList.remove('lanzarAtaqueAgua'), 1000)	
@@ -83,24 +84,24 @@ class Pokemon {
 }
 
 const TOTAL_POKEMON_DISPONIBLES = 150
-const $listaPD   = document.getElementById('pokemonList')
-const $txtBattle = document.getElementById('battle-text')
+const $listaPD   = document.getElementById('pokemonList')//Lista de Pokemones Disponibles
+const $txtBattle = document.getElementById('battle-text')//Texto de la batalla
 var ids = new Array(TOTAL_POKEMON_DISPONIBLES)
-var listaPD = []
-var movesPokemon = []
-var typeEsp
+var listaPD = [] // array en donde se almacenarán los pokemon en formato JSON
+var movesPokemon = []//array en donde se almacenarán los ataques en español
+var typeEsp //tipo de pokemon en español
 var useDefense = false
 var evadAtaque = false
 var pokeAtacado = false
 var pokemonSelected
 var pokemonSelected1
 var pokemonSelected2
-
+//al array ids se le asignarán los numeros del 1 al 150 inicialmente(TOTAL_POKEMON_DISPONIBLES)
 for(let i=0; i<ids.length; i++){
 	let j  = i+1
 	ids[i] = j
 }
-
+//función para mandar a llamar, almacenar y presentar datos para posterior consulta
 async function loadPokemonAvailable() {
 	const URL_API_POKEMON = 'https://pokeapi.co/api/v2/pokemon/id'
 	
@@ -108,6 +109,7 @@ async function loadPokemonAvailable() {
 		const pokemon = await fetch(URL_API_POKEMON.replace('id', id))
 		const poke 	  = await pokemon.json()
 
+		//Despues de devolver los datos, se suma a la lista y se almacena en un array en formato JSON
 		if (poke.id != null) {
 			$listaPD.innerHTML += poke.id+'. '+poke.name+'<br />'
 			listaPD.push(poke)
@@ -115,22 +117,23 @@ async function loadPokemonAvailable() {
 		}
 		throw new Error(`No se pudo obtener el Pokemon ${id}`)
 	}
-
+	//recorre cada elemento dentro del array ids, mandando a traer datos de manera sincrona
 	for(id in ids) {
 		try {
 			await getPokemon(ids[id])
+		//En caso de tener problemas al mandar a llamar datos de la API se ejecutará el msj de error
 		}catch(error) {
 			alert(error)
 		}
 	}
 }
-
+//devolverá el ataque en español con formato JSON
 async function getAtaqueEs(url) {
 	const ataquePokemonUrl  = await fetch(url)
 	const ataquePokemonJSON = await ataquePokemonUrl.json()
 	return ataquePokemonJSON
 }
-
+//Se obtendrán los 3 ataques en español y se almacenarán en un array
 function getMovesPokemon($pokemon) {
 	movesPokemon = new Array(0)
 
@@ -139,14 +142,12 @@ function getMovesPokemon($pokemon) {
 		const ataqueEsp     = await ataquePokemon.names[4].name
 		movesPokemon.push({name: ataqueEsp})
 	})
-	//console.log(movesPokemon)
 }
-
+//Obtiene el tipo en español y le asigna el valor a una variable
 async function getTypeEsp($pokemon) {
 	const url = $pokemon.types[0].type.url
 
 	const typesUrl   = await fetch(url)
 	const typesJSON  = await typesUrl.json()
 	typeEsp 		 = typesJSON.names[4].name
-	//console.log(typeEsp)
 }
