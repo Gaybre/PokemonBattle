@@ -39,6 +39,9 @@ const $ataque2b			= document.getElementById('ataque2b')
 const $ataque3b			= document.getElementById('ataque3b')
 const $playAgain		= document.getElementById('playAgain')//boton "Jugar otra vez"
 const $irGH				= document.getElementById('irGH')//imagen del enlace al repositorio en el footer
+const $pokemonInicial	= document.getElementById('pokemonInicial')
+const $down				= document.getElementById('down')
+const $up				= document.getElementById('up')
 
 var namePlayer1, namePlayer2
 var turno   = 1
@@ -48,6 +51,8 @@ $start.addEventListener('click', empezar)
 $btnPlayer.addEventListener('click', playerName)
 $btnPokemon.addEventListener('click',selectPokemon)
 $playAgain.addEventListener('click', playAgain)
+$up.addEventListener('click', () => $pokemonInicial.classList.add('hide'))
+$down.addEventListener('click', () => $pokemonInicial.classList.remove('hide'))
 //utilizaremos 'preventDefault' en el evento 'submit' para que no se actualice el navegador
 $formName.addEventListener('submit', (ev) => {
 	ev.preventDefault()
@@ -96,7 +101,7 @@ function playAgain() {
 	$playAgain.classList.toggle('hide')
 	$txtPokemonID.value = ''
 	$p2.classList.remove('indicator')
-	setTimeout(() => $p1.classList.add('indicator'), 2000)
+	setTimeout(() => $p1.classList.add('indicator'), 1000)
 }
 //Validará el input, asignará el nombre al player en turno y lo mostrará en el indicador
 //Despues de asignar ambos, pasará al contenedor de 'Elige a tu compañero de batalla'

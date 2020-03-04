@@ -266,6 +266,51 @@ h3 {
 	animation-duration: 2s;
 	animation-iteration-count: infinite;
 }
+/* ------------------------------------ Pokemon Inicial*/
+.container__pokemonInicial {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: #E0FFFF;
+	border: 2px solid #122FA4;
+	border-bottom-right-radius: 50px;
+	border-left: none;
+	border-top: none;
+	width: 200px;
+	height: 50%;
+	padding: 10px 20px;
+	position: absolute;
+	text-align: left;
+}
+.pokemonInicial__text {
+	margin: 0px;
+}
+.pokemonInicial--scroll {
+	width: 100%;
+	overflow-y: scroll;
+}
+.pokemonInicial--scroll-h5 {
+	margin-bottom: 0px;
+}
+.up {
+	align-self: center;
+	transform: scaleY(-1);
+}
+.down {
+	position: absolute;
+	left: 0;
+	margin-left: 100px;
+	margin-top: 60px;
+	
+}
+.upDown {
+	width: 30px;
+	border-radius: 100px;
+}
+.upDown:hover {
+	box-shadow: #005fff 0px 0px 10px 2px;
+	cursor: pointer;
+}
 
 /* ------------------------------------ footer*/
 .footer {
@@ -401,7 +446,6 @@ a:hover {
 	animation-duration: .3s;
 	animation-iteration-count: infinite;	
 }
-
 .evadAtaque {
 	animation-name: evadir;
 	animation-duration: .3s;
@@ -467,7 +511,7 @@ a:hover {
 @keyframes evadir {
 	0%   {margin: 0px 20px;}
 	50%  {margin: 10px 10px;}
-	100% {margin: 0;}
+	100% {margin: 0px;}
 }
 @keyframes defense {
 	0% {
@@ -488,3 +532,4 @@ a:hover {
 	50%   {opacity:.5;}
 	100%  {opacity: 0;}
 }
+/*---------------------------- RESPONSIVE -------------------------------*/
