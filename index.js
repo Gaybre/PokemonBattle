@@ -245,7 +245,7 @@ function chooseDito() {
 	$divDito.classList.add('containerDito')
 }
 //Cambiara tamaño y orientación de las imagenes/botones de la batalla de acuerdo al turno
-function changeImgPosition() {
+function nextTurn() {
 	switch(turno) {
 		case 1:
 			imgTurnPokemon2()
@@ -323,17 +323,15 @@ function perdedor($img, {name}, user) {
 //Despues de cada ataque se validará que la vida de cada Pokemon no sea 0 o menos para continuar
 async function validarGanador() {
 	if (pokemonSelected1.vida < 1) {
-		turnButtonsOf()
 		$p2.classList.toggle('indicator')
 		await ganador($imgPoke2, pokemonSelected2, namePlayer2)
 		setTimeout(() => perdedor($imgPoke1, pokemonSelected1, namePlayer1), 1100)
-	} else if (pokemonSelected2.vida < 1) {
-		turnButtonsOf()
+	}else if (pokemonSelected2.vida < 1) {
 		$p1.classList.toggle('indicator')
 	    await ganador($imgPoke1, pokemonSelected1, namePlayer1)
 		setTimeout(() => perdedor($imgPoke2, pokemonSelected2, namePlayer2), 1100)
 	}else{
-		changeImgPosition()
+		nextTurn()
 		setTimeout(() => $txtBattle.innerHTML += `<br />La battalla continua...`, 1000)
 		$battleButtons1.classList.toggle('turnButtons')
 		$battleButtons2.classList.toggle('turnButtons')
@@ -347,6 +345,7 @@ async function validarGanador() {
 //Ejecutará las los efectos del atacante, atacado, defensa, evadir ataque
 //Condicionará el valor de daño de acuerdo al nivel de ambos pokemon y actualizará el marcador de vida despues del ataque
 function pokeAtack(attack) {
+	turnButtonsOf()
 	var powerAtack
 	var $atacante
 	var $atacado
@@ -406,11 +405,9 @@ function pokeAtack(attack) {
 	}
 
 	$atacado.vida -= powerAtack
-
-	if ($atacado.vida < 0) {
-		$atacado.vida = 0
-	}
+	if ($atacado.vida < 0) {$atacado.vida = 0}
 	$marcador.innerHTML = $atacado.vida
+
 	//Después de ejecutar las animaciones se validará si hay ganador o si la batalla continua
 	setTimeout(() => validarGanador(), 1200)
 }
@@ -444,5 +441,4 @@ function turnButtonsOf() {
 	$ataque2a.removeEventListener('click', pokeAtack)
 	$ataque3a.removeEventListener('click', pokeAtack)
 }
-//Inicia el juego
 showInstructions()
