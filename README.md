@@ -1,4 +1,5 @@
 ![](https://fontmeme.com/permalink/200102/d5d66e666f89055c838378429dc8ab7c.png)
+
 > Simulando una Batalla Pokemón
 
 ## Objetivo
@@ -59,14 +60,16 @@ Inicialmente las consultas a la API se realizaban con jQuery, desde el segundo c
 2. Las imagenes fueron seleccionadas para no infringir sobre los derechos de autor
 3. Los sitios de donde se obtienen las imagenes tienen permitido el uso personal y no comercial de su contenido multimedia.
 
+
 ## ¿Cómo puedo contribuir y ser parte del proyecto?
-Si terminaste el curso de Git y GitHub de Platzi o estudias por tu cuenta y te interesa practicar el cómo contribuir en GitHub. <strong>Puedes hacerle Fork y pull Requests a este repositorio</strong>.
+Si terminaste el curso de Git y GitHub de Platzi o estudias por tu cuenta y te interesa practicar el cómo contribuir en GitHub. <strong>Puedes hacerle Fork y Pull Requests a este repositorio</strong>.
 
 >Realiza lo siguiente para que acepte las contribuciones.
 
 * Busca en el HTML el siguiente div:  `<div class="pokemonInicial--scroll">`
 * Dentro se encuentran listas desordenadas`<ul>`
 * Debrás unicamente agregar un item `<li>`con tu nombre dentro de la lista del Pokemon inicial que elegirias.
+
  ![](https://ya-webdesign.com/transparent250_/pokemon-starters-png.png)
 
  <strong>Ejemplo: </strong>
