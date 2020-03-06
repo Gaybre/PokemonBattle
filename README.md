@@ -36,14 +36,14 @@ Inicialmente las consultas a la API se realizaban con jQuery, desde el segundo c
 		- [x] align-self
 		- [x] flex-wrap
 	- [x] Iteración del display de elementos
-	- [x] uso de <strong>:hover</strong> para elementos dinamicos
+	- [x] Uso de :hover para elementos dinamicos
 	- [x] Animaciones
 	- [x] Unidades de medida relativas y absolutas
 	- [x] Elementos con mas de una clase
 	- [x] Imagenes de rutas absolutas y relativas
 	- [ ] Responsive Design
 	- [ ] Preprocesadores
-- [x] <strong>GitHub pages</strong>
+- [x] <strong>GitHub Pages</strong>
 
 > Mejorará en futuras versiones
 
