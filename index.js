@@ -51,8 +51,14 @@ $start.addEventListener('click', empezar)
 $btnPlayer.addEventListener('click', playerName)
 $btnPokemon.addEventListener('click',selectPokemon)
 $playAgain.addEventListener('click', playAgain)
-$up.addEventListener('click', () => $pokemonInicial.classList.add('hide'))
-$down.addEventListener('click', () => $pokemonInicial.classList.remove('hide'))
+$up.addEventListener('click', () => {
+	$pokemonInicial.classList.add('hide') 
+	$down.classList.remove('hide')
+})
+$down.addEventListener('click', () => {
+	$pokemonInicial.classList.remove('hide') 
+	$down.classList.add('hide')
+})
 //utilizaremos 'preventDefault' en el evento 'submit' para que no se actualice el navegador
 $formName.addEventListener('submit', (ev) => {
 	ev.preventDefault()
