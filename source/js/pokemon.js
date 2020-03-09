@@ -103,7 +103,6 @@ for(let i=0; i<ids.length; i++){
 }
 //función para mandar a llamar, almacenar y presentar datos para posterior consulta
 async function loadPokemonAvailable() {
-	const URL_API_POKEMON = 'https://pokeapi.co/api/v2/pokemon/id'
 	
 	async function getPokemon(id) {
 		const pokemon = await fetch(URL_API_POKEMON.replace('id', id))
@@ -111,7 +110,7 @@ async function loadPokemonAvailable() {
 
 		//Despues de devolver los datos, se suma a la lista y se almacena en un array en formato JSON
 		if (poke.id != null) {
-			$listaPD.innerHTML += poke.id+'. '+poke.name+'<br />'
+			$listaPD.innerHTML += '<span draggable="true" ondragstart="dragStart(event)" id="poke'+ poke.id+'">'+ poke.id+'. '+poke.name+'</span><br />'
 			listaPD.push(poke)
 			return poke
 		}
@@ -142,6 +141,27 @@ function getMovesPokemon($pokemon) {
 		const ataqueEsp     = await ataquePokemon.names[4].name
 		movesPokemon.push({name: ataqueEsp})
 	})
+}
+
+function dragStart(event) {
+	event.dataTransfer.setData("Text", event.target.id);
+}
+
+function allowDrop(event) {
+	event.preventDefault();
+}
+  
+function drop(event) {
+	event.preventDefault();
+	var data = event.dataTransfer.getData("Text");
+	id = data.replace('poke', "")
+	fetch(URL_API_POKEMON.replace('id', id))
+		.then(response => response.json())
+		.then(data=> {
+			img = document.getElementById("imgPokebola")
+			img.src = data.sprites.front_default
+		})
+	event.target.value = parseInt(id);
 }
 //Obtiene el tipo en español y le asigna el valor a una variable
 async function getTypeEsp($pokemon) {

@@ -106,7 +106,7 @@
 		  			<p class="displayText" id="txtCargando">Cargando...</p>
 		  			<div class="listaPokemonA__scroll">
 		  				<img id="gifpokemon" class="listaPokemonA__loadingList" alt="QuienEsEstePokemon" src="https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif">
-		  				<p id="pokemonList" class="hide"></p>
+		  				<p id="pokemonList" class="hide" ondragover="allowDrop(event)"></p>
 		  			</div>
 		  		</section>
 		     	<section class="container__choosingPokemon--listaPokemon" id="listaPokemonB">
@@ -118,7 +118,7 @@
 						Selecciona de la lista, ingresa el ID y presiona Aceptar solo si estas listo para inliciar la batalla
 					</p>
 					<form id="formID" class="form">
-		  				<input type="number" placeholder="ID" class="txt" id="txtPokemonSelected">
+		  				<input type="number" placeholder="ID" class="txt" id="txtPokemonSelected" ondrop="drop(event)"> 
 					</form>
 		  			<button class="btn" id="btnPokemonName">Aceptar</button>
 		  		</section>
