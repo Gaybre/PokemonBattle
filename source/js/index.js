@@ -42,6 +42,7 @@ const $irGH				= document.getElementById('irGH')//imagen del enlace al repositor
 const $pokemonInicial	= document.getElementById('pokemonInicial')
 const $down				= document.getElementById('down')
 const $up				= document.getElementById('up')
+const URL_API_POKEMON = 'https://pokeapi.co/api/v2/pokemon/id'
 
 var namePlayer1, namePlayer2
 var turno   = 1
@@ -208,7 +209,8 @@ async function makePokemon(n) {
 //Validará el ID ingresado para alertar al usuario o para crear la instancia del Pokemon elegido
 function selectPokemon() {
 	var turnoNamePlayer//Se le asignará el nombre del player en turno
-
+	img = document.getElementById("imgPokebola")
+	img.src = "https://cdn.pixabay.com/photo/2019/11/18/15/46/pokemon-4635112__340.png"
 	switch(turno) {
 		case 1:
 			turnoNamePlayer = namePlayer1

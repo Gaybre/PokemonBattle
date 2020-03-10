@@ -26,7 +26,7 @@
 				</ul>
 				<h5 class="pokemonInicial--scroll-h5">Bulbasaur</h5>
 				<ul class="pokemonInicial__text">
-					<li></li>
+					<li>Danilo Toro</li>
 				</ul>
 				<h5 class="pokemonInicial--scroll-h5">Squirtle</h5>
 				<ul class="pokemonInicial__text">
@@ -106,7 +106,7 @@
 		  			<p class="displayText" id="txtCargando">Cargando...</p>
 		  			<div class="listaPokemonA__scroll">
 		  				<img id="gifpokemon" class="listaPokemonA__loadingList" alt="QuienEsEstePokemon" src="https://media.giphy.com/media/DRfu7BT8ZK1uo/giphy.gif">
-		  				<p id="pokemonList" class="hide"></p>
+		  				<p id="pokemonList" class="hide" ondragover="allowDrop(event)"></p>
 		  			</div>
 		  		</section>
 		     	<section class="container__choosingPokemon--listaPokemon" id="listaPokemonB">
@@ -115,10 +115,10 @@
 		  			</h3>
 		        	<img src="https://cdn.pixabay.com/photo/2019/11/18/15/46/pokemon-4635112__340.png" alt="Pokebola" id="imgPokebola" class="listaPokemonB__imgPokebola">
 		  			<p>
-						Selecciona de la lista, ingresa el ID y presiona Aceptar solo si estas listo para inliciar la batalla
+						Ingresa el ID o arrastra un Pokemon de la lista. Presiona Aceptar solo si estas listo para inliciar la batalla
 					</p>
 					<form id="formID" class="form">
-		  				<input type="number" placeholder="ID" class="txt" id="txtPokemonSelected">
+		  				<input type="number" placeholder="ID" class="txt" id="txtPokemonSelected" ondrop="drop(event)"> 
 					</form>
 		  			<button class="btn" id="btnPokemonName">Aceptar</button>
 		  		</section>
