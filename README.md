@@ -47,7 +47,7 @@ Inicialmente las consultas a la API se realizaban con jQuery, desde el segundo c
 
 > Mejorará en futuras versiones
 
-## Cursos de Platzi para este proyecto
+## Cursos recomendados para crear un proyecto como este
 
 #### <a href="https://platzi.com/clases/html5-css3/"><abbr title="Teacher: Leonidas Esteban">Curso de Desarrollo Web Online</abbr></a>
 #### <a href="https://platzi.com/clases/fundamentos-javascript/"><abbr title="Teacher: Sacha Lifszyc">Fundamentos de JavaScript</abbr></a>
@@ -62,9 +62,9 @@ Inicialmente las consultas a la API se realizaban con jQuery, desde el segundo c
 
 
 ## ¿Cómo puedo contribuir y ser parte del proyecto?
-Si terminaste el curso de Git y GitHub de Platzi o estudias por tu cuenta y te interesa practicar el cómo contribuir en GitHub. <strong>Puedes hacerle Fork y Pull Requests a este repositorio</strong>.
+Si terminaste algún curso de Git y GitHub o estudias por tu cuenta y te interesa practicar el cómo contribuir en GitHub. <strong>Puedes hacerle Fork y Pull Requests a este repositorio</strong>.
 
->Realiza lo siguiente para que acepte las contribuciones.
+>Realiza lo siguiente:
 
 * Busca en el HTML el siguiente div:  `<div class="pokemonInicial--scroll">`
 * Dentro se encuentran listas desordenadas`<ul>`
@@ -82,4 +82,4 @@ Si terminaste el curso de Git y GitHub de Platzi o estudias por tu cuenta y te i
 </div>
 ```
 ---
-<strong>Nota:</strong> Si el Pull requests lleva más modificaciones no podrá ser aceptado
+

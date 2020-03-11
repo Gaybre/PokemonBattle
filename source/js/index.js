@@ -345,7 +345,7 @@ async function validarGanador() {
 		setTimeout(() => perdedor($imgPoke2, pokemonSelected2, namePlayer2), 1100)
 	}else{
 		nextTurn()
-		setTimeout(() => $txtBattle.innerHTML += `<br />La battalla continua...`, 1000)
+		setTimeout(() => $txtBattle.innerHTML += `<br />La battalla continua...`, 500)
 		$battleButtons1.classList.toggle('turnButtons')
 		$battleButtons2.classList.toggle('turnButtons')
 		$p1.classList.toggle('indicator')
